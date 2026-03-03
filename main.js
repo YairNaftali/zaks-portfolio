@@ -559,12 +559,43 @@ function initFilters() {
 // ─────────────────────────────────────────────────────────────────────────────
 // CONTACT FORM
 // ─────────────────────────────────────────────────────────────────────────────
-document.querySelector('#contact-form').addEventListener('submit', e => {
+document.querySelector('#contact-form').addEventListener('submit', async e => {
     e.preventDefault();
-    const btn = e.target.querySelector('.submit-btn');
-    btn.textContent = 'Sent ✓';
-    btn.style.background = '#5a8f60';
-    setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; e.target.reset(); }, 3000);
+    const form = e.target;
+    const btn = form.querySelector('.submit-btn');
+    const originalText = btn.textContent;
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+        const response = await fetch('https://formspree.io/f/mwvngkqj', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form),
+        });
+
+        if (response.ok) {
+            btn.textContent = 'Sent ✓';
+            btn.style.background = '#5a8f60';
+            form.reset();
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+                btn.disabled = false;
+            }, 3000);
+        } else {
+            throw new Error('Server error');
+        }
+    } catch {
+        btn.textContent = 'Failed — try again';
+        btn.style.background = '#b23c22';
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+        }, 3000);
+    }
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
