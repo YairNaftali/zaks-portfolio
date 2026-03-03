@@ -498,7 +498,7 @@ p {
     left: calc(-3rem - max(0px, (100vw - 1280px) / 2));
     width: 100vw;
     /* Use 100vh as extra buffer so it always covers the full bottom of the page */
-    height: calc(100% + 4rem);
+    height: calc(100% + 10rem);
     background-color: var(--color-pink);
     z-index: -1;
 }
