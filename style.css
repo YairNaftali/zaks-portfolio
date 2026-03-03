@@ -208,7 +208,7 @@ body {
     animation: fadeIn 1s ease forwards;
     animation-delay: calc(var(--anim-duration) * 0.5);
     /* Start revealing at 50% through the hero animation */
-    padding: 0 3rem 5rem 3rem;
+    padding: 0 3rem 2rem 3rem;
     max-width: 1280px;
     margin: 0 auto;
     position: relative;
@@ -498,7 +498,7 @@ p {
     left: calc(-3rem - max(0px, (100vw - 1280px) / 2));
     width: 100vw;
     /* Use 100vh as extra buffer so it always covers the full bottom of the page */
-    height: calc(100% + 100vh);
+    height: calc(100% + 4rem);
     background-color: var(--color-pink);
     z-index: -1;
 }
