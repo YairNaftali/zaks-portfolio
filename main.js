@@ -664,7 +664,10 @@ document.getElementById('modal-grid').addEventListener('click', e => {
     }
 });
 
-window.onbeforeunload = () => window.scrollTo(0, 0);
+// Always start at the top on page load/refresh
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 
 // Unlock scrolling after the hero animation completes (matches --anim-duration: 2s)
 setTimeout(() => { document.body.style.overflowY = 'auto'; }, 2000);
