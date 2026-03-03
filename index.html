@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Zak's 2026 Portfolio — Drawing, Painting, Graphic Design & More" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Zak's 2026 Portfolio</title>
+</head>
+
+<body>
+
+  <!-- ─── ANIMATED HERO HEADER ─────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="hero-section top-door">
+      <h1 class="anton-header text-orange">ZAK'S</h1>
+    </div>
+    <div class="hero-section middle-section">
+      <nav class="hero-nav" aria-label="Portfolio sections">
+        <a href="#graphic-design" class="hero-nav-item">GRAPHIC<br>DESIGN</a>
+        <a href="#illustration" class="hero-nav-item">ILLUSTRATION</a>
+        <a href="#other-projects" class="hero-nav-item">OTHER<br>PROJECTS</a>
+        <a href="#contact" class="hero-nav-item">CONTACT<br>ME</a>
+      </nav>
+      <div class="hero-social">
+        <a href="mailto:zakpikmin@gmail.com" class="hero-social-link" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="M2 7l10 7 10-7" />
+          </svg>
+        </a>
+        <a href="tel:+12146047353" class="hero-social-link" aria-label="Phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M6.6 10.8a15.7 15.7 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.25 1z" />
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/goldzed_/" target="_blank" rel="noopener" class="hero-social-link"
+          aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="4.5" />
+            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-section bottom-door">
+      <h1 class="anton-header text-orange">PORTFOLIO</h1>
+    </div>
+  </header>
+
+  <!-- ─── MAIN CONTENT ─────────────────────────────────────────────────── -->
+  <main class="content-reveal">
+
+    <!-- About -->
+    <section class="about-section" id="about">
+      <h2>ARTIST</h2>
+      <p>I create work across drawing, painting, graphic design, 3D, and photography &mdash; driven by curiosity, craft,
+        and a love for the weird and beautiful.</p>
+    </section>
+
+    <!-- Portfolio Gallery -->
+    <section class="gallery-section" id="work">
+      <h2 class="work-heading">
+        <span>WORK</span>
+        <!-- Subcategory filter bar (shown when a category is active) inline with WORK -->
+        <div id="subcategory-filters" class="filter-bar sub-filter-bar" role="group" aria-label="Filter by subcategory">
+        </div>
+      </h2>
+
+      <!-- Category filter bar (hidden by CSS since hero nav routing was added) -->
+      <div id="category-filters" class="filter-bar" role="group" aria-label="Filter by category"></div>
+
+      <!-- Dynamic grid injected by main.js -->
+      <div id="gallery-grid" class="gallery-grid"></div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-section" id="contact">
+      <h2>LET'S TALK</h2>
+      <form id="contact-form" novalidate>
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name" required />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="your@email.com" required />
+        </div>
+        <div class="input-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ─── PROJECT MODAL ───────────────────────────────────────────────────── -->
+  <div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="modal-title" class="modal-title"></h2>
+      <p id="modal-desc" class="modal-desc"></p>
+      <div id="modal-grid" class="modal-grid"></div>
+    </div>
+  </div>
+
+  <!-- ─── LIGHTBOX ──────────────────────────────────────────────────────────── -->
+  <div id="lightbox" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Close">&#x2715;</button>
+    <button id="lightbox-prev" class="lightbox-arrow lightbox-prev" aria-label="Previous">&#8592;</button>
+    <div class="lightbox-inner">
+      <img id="lightbox-img" src="" alt="" />
+      <div id="lightbox-caption" class="lightbox-caption">
+        <p id="lightbox-title" class="lightbox-caption-title"></p>
+        <p id="lightbox-meta" class="lightbox-caption-meta"></p>
+        <p id="lightbox-desc" class="lightbox-caption-desc"></p>
+      </div>
+    </div>
+    <button id="lightbox-next" class="lightbox-arrow lightbox-next" aria-label="Next">&#8594;</button>
+    <div id="lightbox-counter" class="lightbox-counter"></div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>

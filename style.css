@@ -1,0 +1,1047 @@
+@font-face {
+    font-family: 'Steelfish';
+    src: url('/fonts/steelfish-bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+:root {
+    /* Colors from the reference image */
+    --color-pink: #ecd1ca;
+    --color-orange: #B23C22;
+    --color-dark: #1A1A1A;
+    --color-light: #F7F4F2;
+    --color-mid: #E8DDD9;
+
+    /* Typography */
+    --font-display: 'Steelfish', 'Anton', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Animation timing */
+    --anim-duration: 2s;
+}
+
+/* ─── RESET ─────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /* JS removes this after animation */
+}
+
+/* ─── HERO ───────────────────────────────────────────────────────────────── */
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    /* Changed from hidden so the attached halftone pattern can bleed below */
+    background-color: var(--color-orange);
+}
+
+.hero-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.anton-header {
+    font-family: 'Steelfish', var(--font-display);
+    font-size: clamp(4.5rem, 17vw, 20rem);
+    line-height: 0.85;
+    /* Standard tight line-height for display */
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    user-select: none;
+    font-weight: 700;
+}
+
+.text-orange {
+    color: var(--color-orange);
+}
+
+.text-pink {
+    color: var(--color-pink);
+}
+
+.top-door {
+    background-color: var(--color-pink);
+    transform: translate3d(0, -100%, 0);
+    animation: slideDown var(--anim-duration) cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    will-change: transform;
+    backface-visibility: hidden;
+    z-index: 2;
+}
+
+.bottom-door {
+    background-color: var(--color-pink);
+    transform: translate3d(0, 100%, 0);
+    animation: slideUp var(--anim-duration) cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    will-change: transform;
+    backface-visibility: hidden;
+    z-index: 2;
+    overflow: visible;
+    /* Ensure the halftone pseudo-elements bleed out */
+}
+
+/* ─── HALFTONE BUBBLES ON BOTTOM DOOR ──────────────────────────────────── */
+.bottom-door::before {
+    content: '';
+    position: absolute;
+    /* Anchor to bottom edge, nudge up 1px to prevent hairline background bleed */
+    top: calc(100% - 1px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    /* Natural aspect ratio of the 9592x900 image is ~9.38vw */
+    height: 9.383vw;
+    min-height: 4rem;
+    background-image: url('../images/halftone-original.png');
+    background-size: 100% 100%;
+    background-position: center top;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 2;
+    /* Sit on top of the brown fill */
+}
+
+/* Extend the orange background down behind the halftone transparency */
+.bottom-door::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    /* Cover the halftone height plus the about-section top padding to avoid white flash */
+    height: calc(9.383vw + 12vw);
+    background-color: var(--color-orange);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.middle-section {
+    background-color: var(--color-orange);
+    z-index: 1;
+    position: relative;
+}
+
+/* ─── HERO NAV ───────────────────────────────────────────────────────────── */
+.hero-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 4vw, 5rem);
+    padding: 0 2rem;
+    width: 100%;
+}
+
+.hero-nav-item {
+    font-family: 'Steelfish', var(--font-display);
+    font-size: clamp(2.8rem, 5.5vw, 7rem);
+    font-weight: 700;
+    color: var(--color-pink);
+    text-decoration: none;
+    text-align: center;
+    line-height: 0.88;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    transition: color 0.18s ease, transform 0.18s ease;
+    display: block;
+}
+
+.hero-nav-item:hover {
+    color: white;
+    transform: scale(1.04);
+}
+
+.hero-social {
+    position: absolute;
+    right: clamp(1.5rem, 4vw, 4rem);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.hero-social-link {
+    color: var(--color-pink);
+    display: flex;
+    transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.hero-social-link:hover {
+    color: white;
+    transform: scale(1.12);
+}
+
+.hero-social-link svg {
+    width: clamp(1.4rem, 2.5vw, 2.2rem);
+    height: clamp(1.4rem, 2.5vw, 2.2rem);
+}
+
+/* Category top-filter hidden — routing is now via hero nav */
+#category-filters {
+    display: none;
+}
+
+
+.content-reveal {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: calc(var(--anim-duration) * 0.5);
+    /* Start revealing at 50% through the hero animation */
+    padding: 0 3rem 5rem 3rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 100;
+    /* Sit clearly above the hero bottom-door orange block */
+}
+
+section {
+    margin-bottom: 8rem;
+}
+
+h2 {
+    font-family: var(--font-display);
+    font-weight: normal;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    color: var(--color-pink);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+    background-color: var(--color-orange);
+    /* bleed edge-to-edge: cancel content padding + auto centering margin */
+    width: 100vw;
+    margin-left: calc(-3rem - max(0px, (100vw - 1280px) / 2));
+    padding: 0.1em 3rem 0.05em calc(3rem + max(0px, (100vw - 1280px) / 2) + 0.35em);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 3;
+}
+
+h2.work-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-right: calc(3rem + max(0px, (100vw - 1280px) / 2) + 0.35em);
+    /* balance right pad against left pad to align right flex items */
+    color: var(--color-pink);
+    /* Ensure WORK text matches ARTIST */
+}
+
+h2.work-heading span {
+    color: var(--color-pink);
+}
+
+.contact-section h2 {
+    color: var(--color-pink);
+    /* Ensure LET'S TALK matches ARTIST */
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4a4040;
+    max-width: 650px;
+}
+
+/* ─── CONTENT SECTION PADDING ─────────────────────────────────────────── */
+.about-section {
+    position: relative;
+    z-index: 10;
+    /* Increased responsive padding to ensure the ~9.4vw animated halftone fully clears ARTIST text */
+    padding-top: 12vw;
+}
+
+/* ─── CONTACT LINK (in bio) ──────────────────────────────────────────────── */
+.contact-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--color-orange);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.contact-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-orange);
+    transition: width 0.25s ease;
+}
+
+.contact-link:hover::after {
+    width: 100%;
+}
+
+/* ─── FILTER BAR ─────────────────────────────────────────────────────────── */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 2.5rem 0 2.5rem;
+}
+
+.filter-btn {
+    font-family: 'Steelfish', var(--font-display);
+    font-weight: normal;
+    font-size: 2.2rem;
+    /* Larger to match the hero nav style */
+    padding: 0 0.5rem;
+    border: none;
+    background: transparent;
+    color: var(--color-pink);
+    cursor: pointer;
+    transition: color 0.18s ease, transform 0.18s ease;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.filter-btn:hover {
+    color: var(--color-light);
+    /* Or white to pop on hover */
+    transform: scale(1.04);
+}
+
+.filter-btn.active {
+    color: var(--color-light);
+}
+
+/* ─── SUBCATEGORY FILTER BAR ─────────────────────────────────────────────── */
+.sub-filter-bar {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
+    pointer-events: none;
+}
+
+.sub-filter-bar.visible {
+    max-height: 80px;
+    opacity: 1;
+    margin: 0;
+    pointer-events: auto;
+    overflow: visible;
+    padding: 0;
+}
+
+.sub-filter-btn {
+    font-size: 0.82rem !important;
+    padding: 0.4rem 1.1rem !important;
+    border-color: rgba(178, 60, 34, 0.45) !important;
+    opacity: 0.85;
+}
+
+/* ─── GALLERY GRID ───────────────────────────────────────────────────────── */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(178, 60, 34, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 32px rgba(178, 60, 34, 0.18);
+}
+
+/* Image wrapper with hover overlay */
+.item-img-wrap {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--color-mid);
+}
+
+.item-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.item-img-wrap img.loaded {
+    opacity: 1;
+}
+
+.gallery-item:hover .item-img-wrap img {
+    transform: scale(1.05);
+}
+
+.item-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(178, 60, 34, 0.82);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 1rem;
+    text-align: center;
+}
+
+.gallery-item:hover .item-overlay {
+    opacity: 1;
+}
+
+.overlay-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: white;
+    line-height: 1.1;
+}
+
+.overlay-meta {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Card info below the image */
+.item-info {
+    padding: 1rem 1.1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+}
+
+.item-subcategory {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-orange);
+    background: var(--color-pink);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    width: fit-content;
+}
+
+.item-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--color-dark);
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+}
+
+.item-meta {
+    font-size: 0.78rem;
+    color: #9a8a85;
+    font-weight: 500;
+}
+
+.item-desc {
+    font-size: 0.85rem;
+    color: #6a5a55;
+    line-height: 1.5;
+    margin-top: 0.2rem;
+}
+
+/* ─── CONTACT FORM ───────────────────────────────────────────────────────── */
+.contact-section {
+    position: relative;
+    max-width: 620px;
+    z-index: 1;
+    /* Establishes a stacking context */
+}
+
+/* Base edge-to-edge Salmon background under the contact section */
+.contact-section::before {
+    content: '';
+    position: absolute;
+    /* Span from the very top of h2 all the way to the bottom edge of the page */
+    top: 0;
+    left: calc(-3rem - max(0px, (100vw - 1280px) / 2));
+    width: 100vw;
+    height: calc(100% + 15rem);
+    background-color: var(--color-pink);
+    z-index: -1;
+}
+
+/* Orange fill block exactly underneath the CONTACT h2 to back the transparent halftone */
+.contact-section h2::before {
+    content: '';
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    width: 100%;
+    /* Use exactly the halftone height, minus a bit so it doesn't bleed past the solid pink edge */
+    height: calc(9.383vw - 3px);
+    background-color: var(--color-orange);
+    z-index: -1;
+}
+
+/* Halftone rotated 180deg over the orange block under the CONTACT h2 */
+.contact-section h2::after {
+    content: '';
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    /* Flip it vertically via scaleY */
+    transform: scaleY(-1);
+    width: 100%;
+    height: 9.383vw;
+    min-height: 4rem;
+    background-image: url('../images/halftone-original.png');
+    background-size: 100% 100%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: calc(10vw + 2rem);
+    /* Pushes the form down past the halftone transition */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.input-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-dark);
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: 2px solid var(--color-mid);
+    border-radius: 6px;
+    background: white;
+    color: var(--color-dark);
+    transition: border-color 0.2s ease;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-orange);
+}
+
+.submit-btn {
+    background-color: var(--color-orange);
+    color: white;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.25s ease, transform 0.15s ease;
+    letter-spacing: 0.5px;
+    align-self: flex-start;
+}
+
+.submit-btn:hover {
+    background-color: #8c2a15;
+    transform: scale(1.02);
+}
+
+/* ─── FOLDER / PROJECT CARD ──────────────────────────────────────────────── */
+.project-card {
+    cursor: pointer;
+}
+
+.folder-badge {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+    background: rgba(26, 26, 26, 0.75);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+}
+
+.img-placeholder {
+    width: 100%;
+    height: 100%;
+}
+
+/* ─── PROJECT MODAL ──────────────────────────────────────────────────────── */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 26, 26, 0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    backdrop-filter: blur(6px);
+}
+
+.modal-backdrop.open {
+    display: flex;
+}
+
+.modal-box {
+    background: var(--color-light);
+    border-radius: 12px;
+    max-width: 1000px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--color-orange);
+    line-height: 1;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.modal-close:hover {
+    background: var(--color-pink);
+}
+
+.modal-title {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--color-orange);
+    margin-bottom: 0.4rem;
+    width: auto;
+    margin-left: -2.5rem;
+    margin-right: -2.5rem;
+    margin-top: -2.5rem;
+    background: var(--color-pink);
+    display: block;
+    padding: 0.2em 2.5rem 0.1em calc(2.5rem + 0.1em);
+}
+
+.modal-desc {
+    color: #7a6a65;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
+}
+
+.modal-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.modal-item-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    margin-top: 0.4rem;
+    color: var(--color-dark);
+}
+
+.modal-item-meta {
+    font-size: 0.75rem;
+    color: #9a8a85;
+}
+
+.modal-empty {
+    grid-column: 1 / -1;
+    padding: 2rem;
+    text-align: center;
+    color: #9a8a85;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.modal-empty code {
+    display: inline-block;
+    background: var(--color-pink);
+    color: var(--color-orange);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+}
+
+/* ─── LIGHTBOX ───────────────────────────────────────────────────────────── */
+.lightbox-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.96);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-backdrop.open {
+    display: flex;
+}
+
+.lightbox-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: min(90vw, 1200px);
+    max-height: 90vh;
+}
+
+#lightbox-img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+    user-select: none;
+    animation: lbFadeIn 0.2s ease;
+}
+
+.lightbox-caption {
+    width: 100%;
+    padding: 1.1rem 0.2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-top: 0.9rem;
+}
+
+.lightbox-caption-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: white;
+    margin: 0 0 0.2rem;
+    letter-spacing: 0.3px;
+}
+
+.lightbox-caption-meta {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.5px;
+}
+
+.lightbox-caption-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    max-width: 680px;
+}
+
+.lightbox-caption-desc.desc-empty {
+    color: rgba(255, 255, 255, 0.35);
+    font-style: italic;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: white;
+    font-size: 1.6rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.lightbox-arrow:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.lightbox-prev {
+    left: 1.5rem;
+}
+
+.lightbox-prev:hover {
+    transform: translateY(-50%) translateX(-2px);
+}
+
+.lightbox-next {
+    right: 1.5rem;
+}
+
+.lightbox-next:hover {
+    transform: translateY(-50%) translateX(2px);
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* ─── ALL DISPLAY-FONT ELEMENTS → UPPERCASE ─────────────────────────────── */
+.overlay-title,
+.filter-btn,
+.lightbox-caption-title,
+.modal-item-title,
+.desc-title,
+.contact-link {
+    text-transform: uppercase;
+}
+
+/* Make all clickable gallery items show pointer */
+.gallery-item:not(.project-card) {
+    cursor: pointer;
+}
+
+/* Modal images are also clickable */
+.modal-item {
+    cursor: pointer;
+}
+
+.modal-item img {
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.modal-item:hover img {
+    opacity: 0.85;
+    transform: scale(1.02);
+}
+
+/* ─── DESCRIPTION PANEL ──────────────────────────────────────────────────── */
+.description-panel {
+    grid-column: 1 / -1;
+    background: var(--color-pink);
+    border-radius: 10px;
+    animation: descExpand 0.28s ease;
+    overflow: hidden;
+}
+
+.desc-inner {
+    padding: 1.8rem 2rem;
+}
+
+.desc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.9rem;
+}
+
+.desc-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--color-orange);
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+.desc-meta {
+    font-size: 0.82rem;
+    color: #9a7a72;
+    font-weight: 500;
+    margin: 0.2rem 0 0;
+    letter-spacing: 0.5px;
+}
+
+.desc-text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #5a3e38;
+    margin: 0;
+    max-width: 720px;
+}
+
+.desc-empty {
+    color: #b8938a;
+    font-style: italic;
+}
+
+.desc-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-orange);
+    cursor: pointer;
+    padding: 0 0.2rem;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.desc-close:hover {
+    opacity: 1;
+}
+
+@keyframes descExpand {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── KEYFRAMES ──────────────────────────────────────────────────────────── */
+@keyframes lbFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .content-reveal {
+        padding: 3rem 1.5rem;
+    }
+
+    h2 {
+        margin-left: calc(-1.5rem - max(0px, (100vw - 1280px) / 2));
+        padding: 0.1em 1.5rem 0.05em calc(1.5rem + max(0px, (100vw - 1280px) / 2) + 0.35em);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+
+    .filter-bar {
+        gap: 0.5rem;
+    }
+}
