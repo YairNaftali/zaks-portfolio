@@ -1179,7 +1179,13 @@ textarea:focus {
     }
 
     .content-reveal {
-        padding: 0 1rem 3rem 1rem;
+        padding: 0 1rem 1rem 1rem;
+        /* Reduced bottom padding to remove excess space below Send Message */
+    }
+
+    /* Fix salmon bg left offset to match 1rem mobile padding */
+    .contact-section::before {
+        left: calc(-1rem - max(0px, (100vw - 1280px) / 2));
     }
 
     h2 {
