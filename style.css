@@ -494,11 +494,11 @@ p {
 .contact-section::before {
     content: '';
     position: absolute;
-    /* Span from the very top of h2 all the way to the bottom edge of the page */
     top: 0;
     left: calc(-3rem - max(0px, (100vw - 1280px) / 2));
     width: 100vw;
-    height: calc(100% + 15rem);
+    /* Use 100vh as extra buffer so it always covers the full bottom of the page */
+    height: calc(100% + 100vh);
     background-color: var(--color-pink);
     z-index: -1;
 }
@@ -1193,6 +1193,17 @@ textarea:focus {
 
     .filter-btn {
         font-size: 1.3rem;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+        gap: 0.8rem;
+        margin: 1.2rem 0;
+    }
+
+    /* Keep sub-filter-bar horizontal even when parent is column */
+    .sub-filter-bar {
+        flex-direction: row;
     }
 
     /* Modal: full screen on phone */
