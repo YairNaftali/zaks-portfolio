@@ -8,21 +8,21 @@
 // ─────────────────────────────────────────────────────────────────────────────
 const portfolioItems = [
     // ── DRAWING / MEDICAL ──────────────────────────────────────────────────────
-    { type: 'item', title: 'Colostomy', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2025', description: 'A medical illustration depicting the anatomy and surgical placement of a colostomy — an opening in the abdominal wall that reroutes the large intestine to an external bag. Commissioned for clinical reference and patient education.', image: '/images/drawing/medical/colostomy-procreate-2025.webp' },
-    { type: 'item', title: 'Colostomy Detail', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2025', description: '', image: '/images/drawing/medical/colostomy-detail-procreate-2025.webp' },
-    { type: 'item', title: 'DaVinci', category: 'illustration', subcategory: 'commissioned', tool: 'Pencil', date: '2023', description: '', image: '/images/drawing/medical/davinci-pencil-2023.webp' },
-    { type: 'item', title: 'Heartwork in the Garden', category: 'illustration', subcategory: 'commissioned', tool: 'Color Pencil', date: '2024', description: '', image: '/images/drawing/medical/heartwork-in-the-garden-color-pencil-2024.webp' },
-    { type: 'item', title: 'Intercostal Injection', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2024', description: '', image: '/images/drawing/medical/intercostal-injection-procreate-2024.webp' },
-    { type: 'item', title: 'Intercostal Nerve Injection', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2023', description: '', image: '/images/drawing/medical/intercostal-nerve-injection-procreate2023.webp' },
+    { type: 'item', title: 'Colostomy', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2025', description: 'Illustrated diagram commissioned by General Surgeon Racquel Gaetani (Beth Israel) to help patients understand the colostomy procedure.', image: '/images/drawing/medical/colostomy-procreate-2025.webp' },
+    { type: 'item', title: 'Colostomy Detail', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2025', description: 'Illustrated diagram commissioned by General Surgeon Racquel Gaetani (Beth Israel) to help patients understand the colostomy procedure.', image: '/images/drawing/medical/colostomy-detail-procreate-2025.webp' },
+    { type: 'item', title: 'DaVinci', category: 'illustration', subcategory: 'commissioned', tool: 'Pencil', date: '2023', description: 'Commissioned illustration to advertise and commemorate the opening of Methodist\'s Center for Simulation and Wellness to surgery residents.', image: '/images/drawing/medical/davinci-pencil-2023.webp' },
+    { type: 'item', title: 'Heartwork in the Garden', category: 'illustration', subcategory: 'commissioned', tool: 'Color Pencil', date: '2024', description: 'Commissioned wall piece for Methodist Health System\'s newest clinic at Bonton Farms.', image: '/images/drawing/medical/heartwork-in-the-garden-color-pencil-2024.webp' },
+    { type: 'item', title: 'Intercostal Injection', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2024', description: 'Published medical drawing explaining an experimental operation for surgeons on Methodist Hospital\'s research team.', image: '/images/drawing/medical/intercostal-injection-procreate-2024.webp' },
+    { type: 'item', title: 'Intercostal Nerve Injection', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2023', description: 'Published medical drawing explaining an experimental operation for surgeons on Methodist Hospital\'s research team.', image: '/images/drawing/medical/intercostal-nerve-injection-procreate2023.webp' },
     { type: 'item', title: 'Necrotizing Fasciitis Diagram', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2023', description: '', image: '/images/drawing/medical/necrotizing-fasciitis-diagram-procreate-2023.webp' },
 
     // ── DRAWING / PERSONAL ─────────────────────────────────────────────────────
     { type: 'item', title: 'A Little Batty', category: 'illustration', subcategory: 'personal', tool: 'Color Pencil', date: '2021', description: '', image: '/images/drawing/personal/a-little-batty-color-pencil-2021.webp' },
-    { type: 'item', title: 'Bang Yer Head', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2025', description: '', image: '/images/drawing/personal/bang-yer-head-pencil-2025.webp' },
-    { type: 'item', title: 'Bucky', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2022', description: '', image: '/images/drawing/personal/bucky-pencil-2022.webp' },
+    { type: 'item', title: 'Bang Yer Head', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2025', description: 'Personal drawing investigating the inner layers of the cranium and inspecting expressional muscular anatomy.', image: '/images/drawing/personal/bang-yer-head-pencil-2025.webp' },
+    { type: 'item', title: 'Bucky', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2022', description: 'Traditional pencil piece exploring the aesthetics and beauty of chemical compounds.', image: '/images/drawing/personal/bucky-pencil-2022.webp' },
     { type: 'item', title: 'MFA Meltdown', category: 'illustration', subcategory: 'personal', tool: 'Procreate', date: '2025', description: '', image: '/images/drawing/personal/mfa-meltdown-procreate-2025.webp' },
     { type: 'item', title: 'Mischevious Miscreants', category: 'illustration', subcategory: 'personal', tool: 'Color Pencil', date: '2020', description: '', image: '/images/drawing/personal/mischevious-miscreants-color-pencil-2020-.webp' },
-    { type: 'item', title: 'Spill Yer Guts', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2025', description: '', image: '/images/drawing/personal/spill-yer-guts-pencil-2025-.webp' },
+    { type: 'item', title: 'Spill Yer Guts', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2025', description: 'Playful pencil piece dissecting the torso and exploring literal interpretations of idiomatic phrases.', image: '/images/drawing/personal/spill-yer-guts-pencil-2025-.webp' },
     { type: 'item', title: "They're Grreat", category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2021', description: '', image: '/images/drawing/personal/they_re-grreat-pencil-2021-.webp' },
     { type: 'item', title: 'Topsy-Turvy Bike', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2020', description: '', image: '/images/drawing/personal/topsy-turvy-bike-pencil-2020-.webp' },
     { type: 'item', title: 'Touch Fuzzy', category: 'illustration', subcategory: 'personal', tool: 'Color Pencil', date: '2025', description: '', image: '/images/drawing/personal/touch-fuzzy-color-pencil-2025.webp' },
@@ -37,7 +37,7 @@ const portfolioItems = [
         title: 'Hello Dumpling Mural',
         category: 'illustration',
         subcategory: 'personal',
-        description: 'A series of zodiac murals painted on a fence.',
+        description: 'Selected sketches and pieces from a 12-year zodiac mural project commissioned by Beijing street food restaurant Hello Dumpling.',
         image: '/images/painting/hello-dumpling-mural/rabbit-zodiac-acrylic-on-fence-2023.webp',
         items: [
             { title: 'Dragon Zodiac Mockup', tool: 'Procreate', date: '2024', image: '/images/painting/hello-dumpling-mural/dragon-zodiac-mockup-procreate-2024-.webp' },
@@ -48,12 +48,12 @@ const portfolioItems = [
     },
 
     // ── GRAPHIC DESIGN / PERSONAL ──────────────────────────────────────────────
-    { type: 'item', title: 'BIGG LYPS Art Toy Poster', category: 'graphic design', subcategory: 'personal', tool: 'Illustrator', date: '2026', description: '', image: '/images/graphic-design/personal/bigg-lyps-art-toy-poster-illust-2026.webp' },
+    { type: 'item', title: 'BIGG LYPS Art Toy Poster', category: 'graphic design', subcategory: 'personal', tool: 'Illustrator', date: '2026', description: 'Branding concept featuring a transportation-inspired character for a self-created series of marketable art toys.', image: '/images/graphic-design/personal/bigg-lyps-art-toy-poster-illust-2026.webp' },
     {
         type: 'project',
         title: 'Infinity',
         category: 'graphic design', subcategory: 'personal',
-        description: '',
+        description: 'Design stencil for a series of light-based photographs (cyanotypes) critiquing the infinite scrolls that trap us.',
         image: '/images/graphic-design/personal/infinity-1-illustrator-2025.webp',
         items: [
             { title: 'Infinity 1', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/personal/infinity-1-illustrator-2025.webp' },
@@ -66,7 +66,7 @@ const portfolioItems = [
         type: 'project',
         title: 'Stickers',
         category: 'graphic design', subcategory: 'personal',
-        description: '',
+        description: 'Design mock-ups for an interactive street art piece where visitors can "graffiti bomb" a stop sign.',
         image: '/images/graphic-design/personal/stickers/sticker-1-illustrator-2024.png',
         items: [
             { title: 'Sticker 1', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/stickers/sticker-1-illustrator-2024.png' },
@@ -83,14 +83,14 @@ const portfolioItems = [
     },
     { type: 'item', title: 'Vaporeon Logo Mockup', category: 'graphic design', subcategory: 'personal', tool: 'Photoshop & Illustrator', date: '2025', description: '', image: '/images/graphic-design/personal/vaporeon-logo-mockup-photoshop-illust-2025_.webp' },
     { type: 'item', title: 'Who Do I Know', category: 'graphic design', subcategory: 'personal', tool: 'Color Pencil & Cardstock', date: '2025', description: '', image: '/images/graphic-design/personal/who-do-i-know-color-pencil-cardstock-2025.webp' },
-    { type: 'item', title: 'YIEL Art Toy Poster', category: 'graphic design', subcategory: 'personal', tool: 'Illustrator', date: '2026', description: '', image: '/images/graphic-design/personal/yiel-art-toy-poster-illust-2026.webp' },
+    { type: 'item', title: 'YIEL Art Toy Poster', category: 'graphic design', subcategory: 'personal', tool: 'Illustrator', date: '2026', description: 'Branding concept featuring a rock-inspired character for a self-created series of marketable art toys.', image: '/images/graphic-design/personal/yiel-art-toy-poster-illust-2026.webp' },
 
     // ── GRAPHIC DESIGN / PROFESSIONAL (ALL FOLDERS) ────────────────────────────
     {
         type: 'project',
         title: 'Adrian Album Covers',
         category: 'graphic design', subcategory: 'professional',
-        description: 'Album cover designs for artist Adrian.',
+        description: 'Final cover and gatefold designs for the vinyl pressing of "Here to Love You", plus early album cover sketches for Berklee instructor Adrian Sicam\'s upcoming LP.',
         image: '/images/graphic-design/professional/adrian-album-covers/adrian-final-album-front-back-illustrator-2025.webp',
         items: [
             { title: 'Final Cover Front & Back', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-final-album-front-back-illustrator-2025.webp' },
@@ -113,7 +113,7 @@ const portfolioItems = [
         type: 'project',
         title: 'Adrian Groovin',
         category: 'graphic design', subcategory: 'professional',
-        description: 'Poster design for Adrian Groovin.',
+        description: 'Posters to promote Adrian Sicam\'s exclusive performance of "Here to Love You" on the Berklee campus.',
         image: '/images/graphic-design/professional/adrian-groovin/adrian-groovin-poster-final-photoshop-2025.webp',
         items: [
             { title: 'Final Poster', tool: 'Photoshop', date: '2025', image: '/images/graphic-design/professional/adrian-groovin/adrian-groovin-poster-final-photoshop-2025.webp' },
@@ -124,7 +124,7 @@ const portfolioItems = [
         type: 'project',
         title: 'Antony Gormley Ads',
         category: 'graphic design', subcategory: 'professional',
-        description: 'Advertisement campaign for Antony Gormley.',
+        description: 'Digital ads, banners, and collateral to advertise the Nasher\'s recent Antony Gormley exhibit.',
         image: '/images/graphic-design/professional/antony-gormley-ads/antony-gormley-ad-detail-4-illustrator-2025.webp',
         items: [
             { title: 'Ad Detail 1', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/antony-gormley-ads/antony-gormley-ad-detail-1-illustrator-2025.webp' },
@@ -138,7 +138,7 @@ const portfolioItems = [
         type: 'project',
         title: 'Antony Gormley Brochure',
         category: 'graphic design', subcategory: 'professional',
-        description: 'Brochure design for Antony Gormley exhibition.',
+        description: 'Selected spreads from a translated and reformatted exhibit guide to help Spanish-speaking visitors navigate the Gormley show.',
         image: '/images/graphic-design/professional/antony-gormley-brochure/antony-gormley-brochure-detail-1-indesign-2025.webp',
         items: [
             { title: 'Brochure Detail 1', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/antony-gormley-brochure/antony-gormley-brochure-detail-1-indesign-2025.webp' },
@@ -151,7 +151,7 @@ const portfolioItems = [
         type: 'project',
         title: 'FFS Ads',
         category: 'graphic design', subcategory: 'professional',
-        description: 'Free First Saturdays rebrand ad campaign.',
+        description: 'Selected ads from an upcoming year-long campaign updating the Nasher\'s monthly Free First Saturdays program.',
         image: '/images/graphic-design/professional/ffs-ads/free-first-saturdays-rebrand-detail-7-illust-2025.webp',
         items: [
             { title: 'Rebrand Detail 1', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/ffs-ads/free-first-saturdays-rebrand-detail-1-illust-2025-.webp' },
@@ -181,7 +181,7 @@ const portfolioItems = [
         type: 'project',
         title: 'Nasher Mini Brochure',
         category: 'graphic design', subcategory: 'professional',
-        description: 'Mini brochure for the Nasher Sculpture Center.',
+        description: 'Selected spreads and details from an updated museum guide designed to inform visitors on the museum\'s history and events.',
         image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-detail-1-indesign-2025.webp',
         items: [
             { title: 'Brochure Detail 1', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-detail-1-indesign-2025.webp' },
@@ -193,7 +193,7 @@ const portfolioItems = [
         type: 'project',
         title: 'Nasher Pride Zine',
         category: 'graphic design', subcategory: 'professional',
-        description: 'Pride zine designed for the Nasher Sculpture Center.',
+        description: 'Early concept for a Pride Month-themed zine highlighting LGBTQ+ artists in the Nasher\'s collection.',
         image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-zine-detail-3-indesign-2025.webp',
         items: [
             { title: 'Zine Detail 1', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-zine-detail-1-indesign-2025.webp' },
@@ -205,7 +205,7 @@ const portfolioItems = [
         type: 'project',
         title: 'Sensory Days Dallas Logo',
         category: 'graphic design', subcategory: 'professional',
-        description: 'Logo design for Sensory Days Dallas.',
+        description: 'Proposed logo concepts and final logomarks for a rebrand of Dallas-based autism awareness association Sensory Days Dallas.',
         image: '/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concepts-illustrator-2025.webp',
         items: [
             { title: 'Logo Concepts', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concepts-illustrator-2025.webp' },
@@ -215,15 +215,15 @@ const portfolioItems = [
 
     // ── MISC / 3D ──────────────────────────────────────────────────────────────
     { type: 'item', title: 'Bird and Bust', category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/bird-and-bust-cinema4d-2022.webp' },
-    { type: 'item', title: 'Fatcap Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '2026', description: '', image: '/images/misc/3d/fatcap-turnaround-nomadsculpt-phtoshop-2026-.webp' },
-    { type: 'item', title: 'Highway 109', category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/highway-109-cinema4d-2022.webp' },
+    { type: 'item', title: 'Fatcap Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '2026', description: 'Reference sheet of a graffiti-inspired character for a self-created series of marketable art toys.', image: '/images/misc/3d/fatcap-turnaround-nomadsculpt-phtoshop-2026-.webp' },
+    { type: 'item', title: 'Highway 109', category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: 'Selected 3D composition from a series exploring the inner worlds within our bodies.', image: '/images/misc/3d/highway-109-cinema4d-2022.webp' },
     { type: 'item', title: "Neurons Firin'", category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/neurons-firin_-cinema4d-2022-.webp' },
-    { type: 'item', title: 'Pepper Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '', description: '', image: '/images/misc/3d/pepper-turnaround-nomadsculpt-phtoshop.webp' },
-    { type: 'item', title: 'Rami Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '2026', description: '', image: '/images/misc/3d/rami-turnaround-nomadsculpt-phtoshop-2026.webp' },
+    { type: 'item', title: 'Pepper Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '', description: 'Reference sheet of a food-inspired character for a self-created series of marketable art toys.', image: '/images/misc/3d/pepper-turnaround-nomadsculpt-phtoshop.webp' },
+    { type: 'item', title: 'Rami Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '2026', description: 'Reference sheet of an animal character for a self-created series of marketable art toys.', image: '/images/misc/3d/rami-turnaround-nomadsculpt-phtoshop-2026.webp' },
     { type: 'item', title: 'The Big Idea', category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/the-big-idea-cinema4d-2022.webp' },
     { type: 'item', title: "Them Apples Neurons Firin'", category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/them-apples-neurons-firin_-cinema4d-2022-.webp' },
     { type: 'item', title: 'Tooth', category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/tooth-cinema4d-2022.webp' },
-    { type: 'item', title: 'Yiel Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '', description: '', image: '/images/misc/3d/yiel-turnaround-nomadsculpt-phtoshop.webp' },
+    { type: 'item', title: 'Yiel Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '', description: 'Reference sheet of a transportation-inspired character for a self-created series of marketable art toys.', image: '/images/misc/3d/yiel-turnaround-nomadsculpt-phtoshop.webp' },
 
     // ── MISC / PHOTO ───────────────────────────────────────────────────────────
     { type: 'item', title: 'The Beauty of Nature (or Whatever)', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/_the-beauty-of-nature_-or-whatever-photo-2024-.webp' },
