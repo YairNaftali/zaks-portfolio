@@ -220,6 +220,23 @@ section {
     margin-bottom: 8rem;
 }
 
+.about-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+.about-portrait {
+    width: clamp(140px, 18vw, 240px);
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 6px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(178, 60, 34, 0.15);
+}
+
 h2 {
     font-family: var(--font-display);
     font-weight: normal;
@@ -1117,6 +1134,16 @@ textarea:focus {
     }
 
     /* Contact form: full width */
+    .about-inner {
+        flex-direction: column;
+    }
+
+    .about-portrait {
+        width: 100%;
+        max-width: 220px;
+        aspect-ratio: 3 / 4;
+    }
+
     .contact-section {
         max-width: 100%;
     }
