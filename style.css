@@ -213,8 +213,7 @@ body {
     margin: 0 auto;
     position: relative;
     z-index: 100;
-    background-color: var(--color-light);
-    /* Opaque so orange hero bleed doesn't show through */
+    /* Body background (var(--color-light), full-width) covers the orange bleed from behind */
 }
 
 section {
