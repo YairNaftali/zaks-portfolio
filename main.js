@@ -397,11 +397,11 @@ const CATEGORIES = ['all', 'illustration', 'graphic design', 'misc'];
 function renderGallery(category = 'all', subcategory = null) {
     const gallery = document.getElementById('gallery-grid');
     const workHeading = document.querySelector('.work-heading span');
+    const footnote = document.querySelector('.gallery-footnote');
 
     const isAll = category === 'all' && !subcategory;
-    if (workHeading) {
-        workHeading.textContent = isAll ? 'SELECTED WORK*' : 'WORK';
-    }
+    if (workHeading) workHeading.textContent = isAll ? 'SELECTED WORK*' : 'WORK';
+    if (footnote) footnote.style.display = isAll ? '' : 'none';
 
     let items = isAll
         ? shuffledItems
