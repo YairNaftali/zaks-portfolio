@@ -398,10 +398,12 @@ function renderGallery(category = 'all', subcategory = null) {
     const gallery = document.getElementById('gallery-grid');
     const workHeading = document.querySelector('.work-heading span');
     const footnote = document.querySelector('.gallery-footnote');
+    const exploreHome = document.getElementById('explore-home');
 
     const isAll = category === 'all' && !subcategory;
     if (workHeading) workHeading.textContent = isAll ? 'SELECTED WORK*' : 'WORK';
     if (footnote) footnote.style.display = isAll ? '' : 'none';
+    if (exploreHome) exploreHome.style.display = isAll ? 'none' : 'flex';
 
     let items = isAll
         ? shuffledItems

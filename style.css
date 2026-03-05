@@ -425,6 +425,48 @@ p {
     letter-spacing: 0.03em;
 }
 
+.explore-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.explore-home-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    border: 2px solid var(--color-dark);
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s;
+}
+
+.explore-home-btn:hover {
+    transform: translateY(-4px);
+    background-color: var(--color-orange);
+    border-color: var(--color-orange);
+}
+
+.explore-home-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-dark);
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.explore-home:hover .explore-home-label {
+    opacity: 1;
+}
+
 .gallery-item {
     display: flex;
     flex-direction: column;
