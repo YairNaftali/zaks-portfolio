@@ -241,13 +241,14 @@ const portfolioItems = [
     { type: 'item', title: 'Speed Limit', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/speed-limit-photo-2024-.webp' },
 ];
 
-// Shuffle portfolio items so the gallery order is randomized on every refresh
+// Shuffled copy used only for the main 'all' view — original order preserved for filtered views
+const shuffledItems = [...portfolioItems];
 (function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-})(portfolioItems);
+})(shuffledItems);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // IMAGE PATH HELPERS
@@ -395,8 +396,15 @@ const CATEGORIES = ['all', 'illustration', 'graphic design', 'misc'];
 
 function renderGallery(category = 'all', subcategory = null) {
     const gallery = document.getElementById('gallery-grid');
-    let items = category === 'all'
-        ? portfolioItems
+    const workHeading = document.querySelector('.work-heading span');
+
+    const isAll = category === 'all' && !subcategory;
+    if (workHeading) {
+        workHeading.textContent = isAll ? 'SELECTED WORK*' : 'WORK';
+    }
+
+    let items = isAll
+        ? shuffledItems
         : portfolioItems.filter(i => i.category === category);
     if (subcategory) {
         items = items.filter(i => i.subcategory === subcategory);
