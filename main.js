@@ -546,6 +546,8 @@ function renderSplash() {
     }).join('');
     loadGalleryImages(gallery);
     showSubfilters('all'); // hide subcategory bar
+    const exploreHome = document.getElementById('explore-home');
+    if (exploreHome) exploreHome.style.display = 'flex';
 }
 
 function navigatePage() {
