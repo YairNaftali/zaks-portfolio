@@ -116,8 +116,8 @@ body {
     background-position: center top;
     background-repeat: no-repeat;
     pointer-events: none;
-    z-index: 2;
-    /* Sit on top of the brown fill */
+    z-index: 200;
+    /* Above content-reveal (z-index 100) so the halftone remains visible */
 }
 
 /* Extend the orange background down behind the halftone transparency */
@@ -213,7 +213,8 @@ body {
     margin: 0 auto;
     position: relative;
     z-index: 100;
-    /* Sit clearly above the hero bottom-door orange block */
+    background-color: var(--color-light);
+    /* Opaque so orange hero bleed doesn't show through */
 }
 
 section {
