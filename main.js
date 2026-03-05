@@ -403,7 +403,7 @@ function renderGallery(category = 'all', subcategory = null) {
     const isAll = category === 'all' && !subcategory;
     if (workHeading) workHeading.textContent = isAll ? 'SELECTED WORK*' : 'WORK';
     if (footnote) footnote.style.display = isAll ? '' : 'none';
-    if (exploreHome) exploreHome.style.display = isAll ? 'none' : 'flex';
+    if (exploreHome) exploreHome.style.display = 'flex';
 
     let items = isAll
         ? shuffledItems
