@@ -241,6 +241,14 @@ const portfolioItems = [
     { type: 'item', title: 'Speed Limit', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/speed-limit-photo-2024-.webp' },
 ];
 
+// Shuffle portfolio items so the gallery order is randomized on every refresh
+(function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+})(portfolioItems);
+
 // ─────────────────────────────────────────────────────────────────────────────
 // IMAGE PATH HELPERS
 // ─────────────────────────────────────────────────────────────────────────────

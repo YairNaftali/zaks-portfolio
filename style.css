@@ -416,6 +416,15 @@ p {
     margin-top: 2.5rem;
 }
 
+.gallery-footnote {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--color-dark);
+    opacity: 0.5;
+    font-style: italic;
+    letter-spacing: 0.03em;
+}
+
 .gallery-item {
     display: flex;
     flex-direction: column;
