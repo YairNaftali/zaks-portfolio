@@ -25,3 +25,8 @@ dist-ssr
 
 # Local Netlify folder
 .netlify
+# Oversized raw formats - convert to webp/jpg before committing
+public/images/**/*.psd
+public/images/**/*.PSD
+public/images/**/*.tif
+public/images/**/*.TIF
