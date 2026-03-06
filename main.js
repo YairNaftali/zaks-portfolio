@@ -28,7 +28,7 @@ const portfolioItems = [
     { type: 'item', title: 'Touch Fuzzy', category: 'illustration', subcategory: 'personal', tool: 'Color Pencil', date: '2025', description: '', image: '/images/drawing/personal/touch-fuzzy-color-pencil-2025.webp' },
 
     // ── PAINTING / SINGLE PIECES ───────────────────────────────────────────────
-    { type: 'item', title: 'Animal Mischief Sketch', category: 'illustration', subcategory: '', tool: 'Procreate', date: '2025', description: '', image: '/images/painting/proteinz-in-motion-acrylic-2023.webp' },
+
     { type: 'item', title: 'Proteinz in Motion', category: 'illustration', subcategory: '', tool: 'Acrylic', date: '2023', description: '', image: '/images/painting/proteinz-in-motion-acrylic-2023.webp' },
 
     // ── PAINTING / HELLO DUMPLING MURAL (FOLDER) ──────────────────────────────
