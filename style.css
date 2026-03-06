@@ -401,8 +401,8 @@ p {
     padding: 0;
 }
 
-.sub-filter-btn {
-    font-size: 1.64rem !important;
+.filter-bar .sub-filter-btn {
+    font-size: 1.64rem;
     opacity: 0.85;
 }
 

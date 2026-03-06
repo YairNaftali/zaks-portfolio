@@ -2,277 +2,25 @@
 // PORTFOLIO DATA
 // type: 'item'    → single piece (has title, tool, date, description, image?)
 // type: 'project' → a folder of related pieces (has title, items: [...])
-//
-// To add images: drop files in public/images/<category>/<subcategory>/
-// File naming: lowercase-with-dashes matching the title.
 // ─────────────────────────────────────────────────────────────────────────────
-const portfolioItems = [
-    // ── DRAWING / MEDICAL ──────────────────────────────────────────────────────
-    { type: 'item', title: 'Colostomy', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2025', description: 'Illustrated diagram commissioned by General Surgeon Racquel Gaetani (Beth Israel) to help patients understand the colostomy procedure.', image: '/images/drawing/medical/colostomy-procreate-2025.webp' },
-    { type: 'item', title: 'Colostomy Detail', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2025', description: 'Illustrated diagram commissioned by General Surgeon Racquel Gaetani (Beth Israel) to help patients understand the colostomy procedure.', image: '/images/drawing/medical/cosotomy-detail-procreate-2025.webp' },
-    { type: 'item', title: 'DaVinci', category: 'illustration', subcategory: 'commissioned', tool: 'Pencil', date: '2023', description: 'Commissioned illustration to advertise and commemorate the opening of Methodist\'s Center for Simulation and Wellness to surgery residents.', image: '/images/drawing/medical/davinci-pencil-2023.webp' },
-    { type: 'item', title: 'Heartwork in the Garden', category: 'illustration', subcategory: 'commissioned', tool: 'Color Pencil', date: '2024', description: 'Commissioned wall piece for Methodist Health System\'s newest clinic at Bonton Farms.', image: '/images/drawing/medical/heartwork-in-the-graden-color-pencil-2024.webp' },
-    { type: 'item', title: 'Intercostal Injection', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2024', description: 'Published medical drawing explaining an experimental operation for surgeons on Methodist Hospital\'s research team.', image: '/images/drawing/medical/intercostal-injection-procreate-2024.webp' },
-    { type: 'item', title: 'Intercostal Nerve Injection', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2023', description: 'Published medical drawing explaining an experimental operation for surgeons on Methodist Hospital\'s research team.', image: '/images/drawing/medical/intercostal-nerve-injection-procreate-2023.webp' },
-    { type: 'item', title: 'Necrotizing Fasciitis Diagram', category: 'illustration', subcategory: 'commissioned', tool: 'Procreate', date: '2023', description: '', image: '/images/drawing/medical/necrotizing-fasciitis-diagram-procreate-2023.webp' },
+let portfolioItems = [];
+let shuffledItems = [];
 
-    // ── DRAWING / PERSONAL ─────────────────────────────────────────────────────
-    { type: 'item', title: 'A Little Batty', category: 'illustration', subcategory: 'personal', tool: 'Color Pencil', date: '2021', description: '', image: '/images/drawing/personal/a-little-batty-color-pencil-2021.webp' },
-    { type: 'item', title: 'Bang Yer Head', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2025', description: 'Personal drawing investigating the inner layers of the cranium and inspecting expressional muscular anatomy.', image: '/images/drawing/personal/bang-yer-head-pencil-2025.webp' },
-    { type: 'item', title: 'Bucky', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2022', description: 'Traditional pencil piece exploring the aesthetics and beauty of chemical compounds.', image: '/images/drawing/personal/bucky-pencil-2022.webp' },
-    { type: 'item', title: 'MFA Meltdown', category: 'illustration', subcategory: 'personal', tool: 'Procreate', date: '2025', description: '', image: '/images/drawing/personal/mfa-meltdown-procreate-2025.webp' },
-    { type: 'item', title: 'Mischevious Miscreants', category: 'illustration', subcategory: 'personal', tool: 'Color Pencil', date: '2020', description: '', image: '/images/drawing/personal/mischevious-miscreants-color-pencil-2020.webp' },
-    { type: 'item', title: 'Spill Yer Guts', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2025', description: 'Playful pencil piece dissecting the torso and exploring literal interpretations of idiomatic phrases.', image: '/images/drawing/personal/spill-yer-guts-pencil-2025.webp' },
-    { type: 'item', title: "They're Grreat", category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2021', description: '', image: '/images/drawing/personal/they-re-grreat-pencil-2021.webp' },
-    { type: 'item', title: 'Topsy-Turvy Bike', category: 'illustration', subcategory: 'personal', tool: 'Pencil', date: '2020', description: '', image: '/images/drawing/personal/topsy-turvy-bike-pencil-2020.webp' },
-    { type: 'item', title: 'Touch Fuzzy', category: 'illustration', subcategory: 'personal', tool: 'Color Pencil', date: '2025', description: '', image: '/images/drawing/personal/touch-fuzzy-color-pencil-2025.webp' },
+async function loadPortfolioData() {
+    try {
+        const res = await fetch('/data/portfolio.json');
+        portfolioItems = await res.json();
 
-    // ── PAINTING / SINGLE PIECES ───────────────────────────────────────────────
-
-    { type: 'item', title: 'Proteinz in Motion', category: 'illustration', subcategory: '', tool: 'Acrylic', date: '2023', description: '', image: '/images/painting/proteinz-in-motion-acrylic-2023.webp' },
-
-    // ── PAINTING / HELLO DUMPLING MURAL (FOLDER) ──────────────────────────────
-    {
-        type: 'project',
-        title: 'Hello Dumpling Mural',
-        category: 'illustration',
-        subcategory: 'personal',
-        description: 'Selected sketches and pieces from a 12-year zodiac mural project commissioned by Beijing street food restaurant Hello Dumpling.',
-        image: '/images/painting/hello-dumpling-mural/rabbit-zodiac-acrylic-on-fence-2023.webp',
-        items: [
-            { title: 'Dragon Zodiac Mockup', tool: 'Procreate', date: '2024', image: '/images/painting/hello-dumpling-mural/dragon-zodiac-mockup-procreate-2024.webp' },
-            { title: 'Rabbit Zodiac', tool: 'Acrylic on fence', date: '2023', image: '/images/painting/hello-dumpling-mural/rabbit-zodiac-acrylic-on-fence-2023.webp' },
-            { title: 'Snake Zodiac', tool: 'Acrylic on fence', date: '2025', image: '/images/painting/hello-dumpling-mural/snake-zodiac-acrylic-on-fence-2025.webp' },
-            { title: 'Tiger Zodiac', tool: 'Acrylic on fence', date: '2022', image: '/images/painting/hello-dumpling-mural/tiger-zodiac-acrylic-on-fence-2022.webp' },
-        ],
-    },
-
-    // ── GRAPHIC DESIGN / PERSONAL ──────────────────────────────────────────────
-    { type: 'item', title: 'BIGG LYPS Art Toy Poster', category: 'graphic design', subcategory: 'personal', tool: 'Illustrator', date: '2026', description: 'Branding concept featuring a transportation-inspired character for a self-created series of marketable art toys.', image: '/images/graphic-design/personal/bigg-lyps-art-toy-poster-illust-2026.webp' },
-    { type: 'item', title: 'Intrusive Thoughts', category: 'graphic design', subcategory: 'personal', tool: 'Illustrator', date: '2026', description: '', image: '/images/graphic-design/personal/intrusive-thoughts-illust-2026.webp' },
-    { type: 'item', title: 'Pepper Art Toy Poster', category: 'graphic design', subcategory: 'personal', tool: 'Illustrator', date: '2026', description: 'Branding concept featuring a food-inspired character for a self-created series of marketable art toys.', image: '/images/graphic-design/personal/pepper-art-toy-poster.webp' },
-    {
-        type: 'project',
-        title: 'Infinity',
-        category: 'graphic design', subcategory: 'personal',
-        description: 'Design stencil for a series of light-based photographs (cyanotypes) critiquing the infinite scrolls that trap us.',
-        image: '/images/graphic-design/personal/infinity-1-illustrator-2025.webp',
-        items: [
-            { title: 'Infinity 1', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/personal/infinity-1-illustrator-2025.webp' },
-            { title: 'Infinity 2', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/personal/infinity-2-illustrator-2025.webp' },
-            { title: 'Infinity 3', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/personal/infinity-3-illustrator-2025.webp' },
-            { title: 'Infinity 4', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/personal/infinity-4-illustrator-2025.webp' },
-        ],
-    },
-    {
-        type: 'project',
-        title: 'Street Sign Stickers',
-        category: 'graphic design', subcategory: 'personal',
-        description: 'Design mock-ups for an interactive street art piece where visitors can "graffiti bomb" a stop sign.',
-        image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered-18.webp',
-        items: [
-            { title: 'Sticker 1', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered-18.webp' },
-            { title: 'Sticker 2', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered-19.webp' },
-            { title: 'Sticker 3', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered-20.webp' },
-            { title: 'Sticker 4', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered-21.webp' },
-            { title: 'Sticker 5', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered-22.webp' },
-            { title: 'Sticker 6', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered-23.webp' },
-            { title: 'Sticker 7', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered-24.webp' },
-            { title: 'Sticker 8', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered-25.webp' },
-            { title: 'Sticker 9', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered-26.webp' },
-            { title: 'Sticker 10', tool: 'Illustrator', date: '2024', image: '/images/graphic-design/personal/street-sign-stickers/stickers-recovered.webp' },
-        ],
-
-    },
-    { type: 'item', title: 'Vaporeon Logo Mockup', category: 'graphic design', subcategory: 'personal', tool: 'Photoshop & Illustrator', date: '2025', description: '', image: '/images/graphic-design/personal/vaporeon-logo-mockup-photoshop-illust-2025.webp' },
-    { type: 'item', title: 'Who Do I Know', category: 'graphic design', subcategory: 'personal', tool: 'Color Pencil & Cardstock', date: '2025', description: '', image: '/images/graphic-design/personal/who-do-i-know-color-pencil-cardstock-2025.webp' },
-    { type: 'item', title: 'YIEL Art Toy Poster', category: 'graphic design', subcategory: 'personal', tool: 'Illustrator', date: '2026', description: 'Branding concept featuring a rock-inspired character for a self-created series of marketable art toys.', image: '/images/graphic-design/personal/yiel-art-toy-poster-illust-2026.webp' },
-
-    // ── GRAPHIC DESIGN / PROFESSIONAL (ALL FOLDERS) ────────────────────────────
-    {
-        type: 'project',
-        title: 'Adrian Album Covers',
-        category: 'graphic design', subcategory: 'professional',
-        description: 'Final cover and gatefold designs for the vinyl pressing of "Here to Love You", plus early album cover sketches for Berklee instructor Adrian Sicam\'s upcoming LP.',
-        image: '/images/graphic-design/professional/adrian-album-covers/adrian-final-album-front-back-illustrator-2025.webp',
-        items: [
-            { title: 'Final Cover Front & Back', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-final-album-front-back-illustrator-2025.webp' },
-            { title: 'Final Gatefold', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-final-album-cover-gatefold-illustrator-2025.webp' },
-            { title: 'Early Concept 1', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-1-illustrator-2025.webp' },
-            { title: 'Early Concept 2', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-2-illustrator-2025.webp' },
-            { title: 'Early Concept 3', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-3-illustrator-2025.webp' },
-            { title: 'Early Concept 4', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-4-illustrator-2025.webp' },
-            { title: 'Early Concept 5', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-5-illustrator-2025.webp' },
-            { title: 'Early Concept 6', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-6-illustrator-2025.webp' },
-            { title: 'Early Concept 7', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-7-illustrator-2025.webp' },
-            { title: 'Early Concept 8', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-8-illustrator-2025.webp' },
-            { title: 'Early Concept 9', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-9-illustrator-2025.webp' },
-            { title: 'Early Concept 10', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-10-illustrator-2025.webp' },
-            { title: 'Early Concept 11', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-11-illustrator-2025.webp' },
-
-        ],
-    },
-    {
-        type: 'project',
-        title: 'Adrian Groovin',
-        category: 'graphic design', subcategory: 'professional',
-        description: 'Posters to promote Adrian Sicam\'s exclusive performance of "Here to Love You" on the Berklee campus.',
-        image: '/images/graphic-design/professional/adrian-groovin/adrian-groovin-poster-final-photoshop-2025.webp',
-        items: [
-            { title: 'Final Poster', tool: 'Photoshop', date: '2025', image: '/images/graphic-design/professional/adrian-groovin/adrian-groovin-poster-final-photoshop-2025.webp' },
-            { title: 'Poster Concept', tool: 'Procreate', date: '2025', image: '/images/graphic-design/professional/adrian-groovin/adrain-groovin-poster-concept-procreate-2025.webp' },
-        ],
-    },
-    {
-        type: 'project',
-        title: 'Antony Gormley Ads',
-        category: 'graphic design', subcategory: 'professional',
-        description: 'Digital ads, banners, and collateral to advertise the Nasher\'s recent Antony Gormley exhibit.',
-        image: '/images/graphic-design/professional/antony-gormley-ads/antony-gormley-ad-detail-4-illustrator-2025.webp',
-        items: [
-            { title: 'Ad Detail 1', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/antony-gormley-ads/antony-gormley-ad-detail-1-illustrator-2025.webp' },
-            { title: 'Ad Detail 2', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/antony-gormley-ads/antony-gormley-ad-detail-2-illustrator-2025.webp' },
-            { title: 'Ad Detail 3', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/antony-gormley-ads/antony-gormley-ad-detail-3-illustrator-2025.webp' },
-            { title: 'Ad Detail 4', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/antony-gormley-ads/antony-gormley-ad-detail-4-illustrator-2025.webp' },
-            { title: 'Ad Detail 5', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/antony-gormley-ads/antony-gormley-ad-detail-5-illustrator-2025.webp' },
-        ],
-    },
-    {
-        type: 'project',
-        title: 'Antony Gormley Brochure',
-        category: 'graphic design', subcategory: 'professional',
-        viewMode: 'spreads',
-        description: 'Selected spreads from a translated and reformatted exhibit guide to help Spanish-speaking visitors navigate the Gormley show.',
-        image: '/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web.webp',
-        items: [
-            { title: 'Spread 1', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web.webp' },
-            { title: 'Spread 3', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web3.webp' },
-            { title: 'Spread 5', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web5.webp' },
-            { title: 'Spread 6', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web6.webp' },
-            { title: 'Spread 7', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web7.webp' },
-            { title: 'Spread 9', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web9.webp' },
-            { title: 'Spread 10', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web10.webp' },
-            { title: 'Spread 11', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web11.webp' },
-        ],
-    },
-    {
-        type: 'project',
-        title: 'FFS Ads',
-        category: 'graphic design', subcategory: 'professional',
-        description: 'Selected ads from an upcoming year-long campaign updating the Nasher\'s monthly Free First Saturdays program.',
-        image: '/images/graphic-design/professional/ffs-ads/free-first-saturdays-rebrand-detail-7-illust-2025.webp',
-        items: [
-            { title: 'Rebrand Detail 1', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/ffs-ads/free-first-saturdays-rebrand-detail-1-illust-2025.webp' },
-            { title: 'Rebrand Detail 2', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/ffs-ads/free-first-saturdays-rebrand-detail-2-illust-2025.webp' },
-            { title: 'Rebrand Detail 3', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/ffs-ads/free-first-saturdays-rebrand-detail-3-illust-2025.webp' },
-            { title: 'Rebrand Detail 4', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/ffs-ads/free-first-saturdays-rebrand-detail-4-illust-2025.webp' },
-            { title: 'Rebrand Detail 5', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/ffs-ads/free-first-saturdays-rebrand-detail-5-illust-2025.webp' },
-            { title: 'Rebrand Detail 6', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/ffs-ads/free-first-saturdays-rebrand-detail-6-illust-2025.webp' },
-            { title: 'Rebrand Detail 7', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/ffs-ads/free-first-saturdays-rebrand-detail-7-illust-2025.webp' },
-        ],
-    },
-    {
-        type: 'project',
-        title: 'Martin Kindley Logo',
-        category: 'graphic design', subcategory: 'professional',
-        description: 'Logo concept and final logomarks designed for musician Martin Kindley.',
-        image: '/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-final-illustrator-2025.webp',
-        items: [
-            { title: 'Final Logo', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-final-illustrator-2025.webp' },
-            { title: 'Concept 1', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-1-illustrator-2025.webp' },
-            { title: 'Concept 2', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-2-illustrator-2025.webp' },
-            { title: 'Concept 3', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-3-illustrator-2025.webp' },
-            { title: 'Concept 4', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-4-illustrator-2025.webp' },
-        ],
-    },
-    {
-        type: 'project',
-        title: 'Nasher Mini Brochure',
-        category: 'graphic design', subcategory: 'professional',
-        viewMode: 'spreads',
-        description: 'Selected spreads and details from an updated museum guide designed to inform visitors on the museum\'s history and events.',
-        image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web.webp',
-        items: [
-            { title: 'Spread 1', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web.webp' },
-            { title: 'Spread 2', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web2.webp' },
-            { title: 'Spread 3', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web3.webp' },
-            { title: 'Spread 4', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web4.webp' },
-            { title: 'Spread 5', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web5.webp' },
-            { title: 'Spread 7', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web7.webp' },
-            { title: 'Spread 8', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web8.webp' },
-            { title: 'Spread 11', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web11.webp' },
-            { title: 'Spread 13', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web13.webp' },
-            { title: 'Spread 15', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web15.webp' },
-            { title: 'Spread 18', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web18.webp' },
-            { title: 'Spread 19', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web19.webp' },
-            { title: 'Spread 20', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web20.webp' },
-        ],
-    },
-    {
-        type: 'project',
-        title: 'Nasher Pride Zine',
-        category: 'graphic design', subcategory: 'professional',
-        viewMode: 'spreads',
-        description: 'Early concept for a Pride Month-themed zine highlighting LGBTQ+ artists in the Nasher\'s collection.',
-        image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web.webp',
-        items: [
-            { title: 'Spread 1', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web.webp' },
-            { title: 'Spread 2', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web2.webp' },
-            { title: 'Spread 4', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web4.webp' },
-            { title: 'Spread 5', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web5.webp' },
-            { title: 'Spread 6', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web6.webp' },
-            { title: 'Spread 7', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web7.webp' },
-            { title: 'Spread 9', tool: 'InDesign', date: '2025', image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web9.webp' },
-        ],
-    },
-    {
-        type: 'project',
-        title: 'Sensory Days Dallas Logo',
-        category: 'graphic design', subcategory: 'professional',
-        description: 'Proposed logo concepts and final logomarks for a rebrand of Dallas-based autism awareness association Sensory Days Dallas.',
-        image: '/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concepts-illustrator-2025.webp',
-        items: [
-            { title: 'Logo Concepts', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concepts-illustrator-2025.webp' },
-            { title: 'Final Logo', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-final-logo-illust-2025.webp' },
-        ],
-    },
-
-    // ── MISC / 3D ──────────────────────────────────────────────────────────────
-    { type: 'item', title: 'Bird and Bust', category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/bird-and-bust-cinema4d-2022.webp' },
-    { type: 'item', title: 'Fatcap Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '2026', description: 'Reference sheet of a graffiti-inspired character for a self-created series of marketable art toys.', image: '/images/misc/3d/fatcap-turnaround-nomadsculpt-phtoshop-2026.webp' },
-    { type: 'item', title: 'Highway 109', category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: 'Selected 3D composition from a series exploring the inner worlds within our bodies.', image: '/images/misc/3d/highway-109-cinema4d-2022.webp' },
-    { type: 'item', title: "Neurons Firin'", category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/neurons-firin-cinema4d-2022.webp' },
-    { type: 'item', title: 'Pepper Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '', description: 'Reference sheet of a food-inspired character for a self-created series of marketable art toys.', image: '/images/misc/3d/pepper-turnaround-nomadsculpt-phtoshop.webp' },
-    { type: 'item', title: 'Rami Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '2026', description: 'Reference sheet of an animal character for a self-created series of marketable art toys.', image: '/images/misc/3d/rami-turnaround-nomadsculpt-phtoshop-2026.webp' },
-    { type: 'item', title: 'The Big Idea', category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/the-big-idea-cinema4d-2022.webp' },
-    { type: 'item', title: "Them Apples Neurons Firin'", category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/them-apples-neurons-firin-cinema4d-2022.webp' },
-    { type: 'item', title: 'Tooth', category: 'misc', subcategory: '3d', tool: 'Cinema4D', date: '2022', description: '', image: '/images/misc/3d/tooth-cinema4d-2022.webp' },
-    { type: 'item', title: 'Yiel Turnaround', category: 'misc', subcategory: '3d', tool: 'NomadSculpt & Photoshop', date: '', description: 'Reference sheet of a transportation-inspired character for a self-created series of marketable art toys.', image: '/images/misc/3d/yiel-turnaround-nomadsculpt-phtoshop.webp' },
-
-    // ── MISC / PHOTO ───────────────────────────────────────────────────────────
-    { type: 'item', title: 'The Beauty of Nature (or Whatever)', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/the-beauty-of-nature-or-whatever-photo-2024.webp' },
-    { type: 'item', title: 'All in My Hand', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/all-in-my-hand-photo-2024.webp' },
-    { type: 'item', title: 'Bedroom', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/bedroom-photo-2024.webp' },
-    { type: 'item', title: 'Candid', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/candid-photo-2024.webp' },
-    { type: 'item', title: 'Drip', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/drip-photo-2024.webp' },
-    { type: 'item', title: 'Gigi', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/gigi-photo-2024.webp' },
-    { type: 'item', title: 'Layla', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/layla-photo-2024.webp' },
-    { type: 'item', title: 'Leftovers', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/leftovers-photo-2024.webp' },
-    { type: 'item', title: 'Lynn', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/lynn-photo-2024.webp' },
-    { type: 'item', title: 'Michelle', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/michelle-photo-2024.webp' },
-    { type: 'item', title: 'Peter', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/peter-photo-2024.webp' },
-    { type: 'item', title: 'Sharan', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/sharan-photo-2024.webp' },
-    { type: 'item', title: 'Speed Limit', category: 'misc', subcategory: 'photo', tool: 'Photo', date: '2024', description: '', image: '/images/misc/photo/speed-limit-photo-2024.webp' },
-];
-
-// Shuffled copy used only for the main 'all' view — original order preserved for filtered views
-const shuffledItems = [...portfolioItems];
-(function shuffle(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
+        // Shuffled copy used only for the main 'all' view
+        shuffledItems = [...portfolioItems];
+        for (let i = shuffledItems.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledItems[i], shuffledItems[j]] = [shuffledItems[j], shuffledItems[i]];
+        }
+    } catch (err) {
+        console.error("Failed to load portfolio data", err);
     }
-})(shuffledItems);
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // IMAGE PATH HELPERS
@@ -300,21 +48,28 @@ function imgTag(src, alt, fallback) {
     return `<img data-src="${src}" data-fallback="${fallback}" alt="${alt}" />`;
 }
 
-// After innerHTML is set, preload all images and set src only when ready
-function loadGalleryImages(container) {
-    container.querySelectorAll('img[data-src]').forEach(img => {
+// Shared IntersectionObserver — fires only when an image is ~300px from view
+const imgObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
         const src = img.dataset.src;
         const fallback = img.dataset.fallback;
-        const test = new Image();
         const reveal = (resolvedSrc) => {
             img.src = resolvedSrc;
-            // use rAF so the browser paints the src before triggering the fade
             requestAnimationFrame(() => requestAnimationFrame(() => img.classList.add('loaded')));
         };
+        const test = new Image();
         test.onload = () => reveal(src);
         test.onerror = () => reveal(fallback);
         test.src = src;
+        imgObserver.unobserve(img);
     });
+}, { rootMargin: '300px 0px' });
+
+// Register all data-src images in container with the observer
+function loadGalleryImages(container) {
+    container.querySelectorAll('img[data-src]').forEach(img => imgObserver.observe(img));
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -322,6 +77,8 @@ function loadGalleryImages(container) {
 // ─────────────────────────────────────────────────────────────────────────────
 let currentProject = null;
 let currentGalleryItems = [];
+
+const projectNodeCache = new Map();
 
 function openProject(projectTitle) {
     currentProject = portfolioItems.find(p => p.type === 'project' && p.title === projectTitle);
@@ -337,25 +94,37 @@ function openProject(projectTitle) {
     document.getElementById('modal-desc').textContent = currentProject.description || '';
 
     const grid = document.getElementById('modal-grid');
-    if (currentProject.items.length === 0) {
-        grid.innerHTML = `<p class="modal-empty">Images coming soon — drop them in:<br><code>public/images/${toSlug(currentProject.category)}/${toSlug(currentProject.subcategory || currentProject.title)}/</code></p>`;
+    grid.innerHTML = '';
+
+    if (projectNodeCache.has(currentProject.title)) {
+        grid.appendChild(projectNodeCache.get(currentProject.title));
     } else {
-        grid.innerHTML = currentProject.items.map(sub => {
-            const src = sub.image || buildImagePath(sub, currentProject);
-            const fb = fallbackSrc(currentProject.category, sub.title);
-            const meta = [sub.tool, sub.date].filter(Boolean).join(', ');
-            return `
+        const container = document.createElement('div');
+        container.style.display = 'contents';
+
+        if (currentProject.items.length === 0) {
+            container.innerHTML = `<p class="modal-empty">Images coming soon — drop them in:<br><code>public/images/${toSlug(currentProject.category)}/${toSlug(currentProject.subcategory || currentProject.title)}/</code></p>`;
+        } else {
+            container.innerHTML = currentProject.items.map(sub => {
+                const src = sub.image || buildImagePath(sub, currentProject);
+                const fb = fallbackSrc(currentProject.category, sub.title);
+                const meta = [sub.tool, sub.date].filter(Boolean).join(', ');
+                return `
         <div class="modal-item" data-title="${sub.title.replace(/"/g, '&quot;')}">
           ${imgTag(src, sub.title, fb)}
           <p class="modal-item-title">${sub.title}</p>
           ${meta ? `<p class="modal-item-meta">${meta}</p>` : ''}
         </div>`;
-        }).join('');
+            }).join('');
+        }
+
+        projectNodeCache.set(currentProject.title, container);
+        grid.appendChild(container);
+        loadGalleryImages(container);
     }
 
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
-    loadGalleryImages(grid);
 }
 
 function closeModal() {
@@ -367,6 +136,8 @@ function closeModal() {
 // ─────────────────────────────────────────────────────────────────────────────
 // SPREAD VIEWER  (for brochures, zines, anything with spreads)
 // ─────────────────────────────────────────────────────────────────────────────
+const spreadNodeCache = new Map();
+
 function openSpreadViewer(project) {
     document.getElementById('spread-title').textContent = project.title;
     const desc = document.getElementById('spread-desc');
@@ -374,22 +145,33 @@ function openSpreadViewer(project) {
     desc.style.display = project.description ? '' : 'none';
 
     const scroll = document.getElementById('spread-scroll');
-    scroll.innerHTML = project.items.map((sub, i) => {
-        const src = sub.image || buildImagePath(sub, project);
-        const fb = fallbackSrc(project.category, sub.title);
-        const meta = [sub.tool, sub.date].filter(Boolean).join(' · ');
-        return `
+    scroll.innerHTML = '';
+
+    if (spreadNodeCache.has(project.title)) {
+        scroll.appendChild(spreadNodeCache.get(project.title));
+    } else {
+        const container = document.createElement('div');
+        container.style.display = 'contents';
+        container.innerHTML = project.items.map((sub, i) => {
+            const src = sub.image || buildImagePath(sub, project);
+            const fb = fallbackSrc(project.category, sub.title);
+            const meta = [sub.tool, sub.date].filter(Boolean).join(' · ');
+            return `
         <div class="spread-img-wrap">
           <span class="spread-index">${i + 1} / ${project.items.length}</span>
           ${imgTag(src, sub.title, fb)}
           <p class="spread-caption">${sub.title}${meta ? ' &nbsp;·&nbsp; ' + meta : ''}</p>
         </div>`;
-    }).join('');
+        }).join('');
+
+        spreadNodeCache.set(project.title, container);
+        scroll.appendChild(container);
+        loadGalleryImages(container);
+    }
 
     scroll.scrollTop = 0;
     document.getElementById('spread-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
-    loadGalleryImages(scroll);
 }
 
 function closeSpreadViewer() {
@@ -775,5 +557,10 @@ setTimeout(() => { document.body.style.overflowY = 'auto'; }, 2000);
 // ─────────────────────────────────────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────────────────────────────────────
-initFilters();
-navigatePage(); // routes via hash, or renders all if no hash
+async function initApp() {
+    await loadPortfolioData();
+    initFilters();
+    navigatePage(); // routes via hash, or renders all if no hash
+}
+
+initApp();
