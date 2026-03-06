@@ -360,7 +360,7 @@ p {
 .filter-btn {
     font-family: 'Steelfish', var(--font-display);
     font-weight: normal;
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     /* Larger to match the hero nav style */
     padding: 0 0.5rem;
     border: none;
@@ -1193,7 +1193,7 @@ textarea:focus {
     }
 
     .filter-btn {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     .filter-bar {
@@ -1312,7 +1312,7 @@ textarea:focus {
     }
 
     .filter-btn {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
     }
 
     .filter-bar {
