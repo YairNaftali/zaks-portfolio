@@ -141,6 +141,7 @@ const portfolioItems = [
         type: 'project',
         title: 'Antony Gormley Brochure',
         category: 'graphic design', subcategory: 'professional',
+        viewMode: 'spreads',
         description: 'Selected spreads from a translated and reformatted exhibit guide to help Spanish-speaking visitors navigate the Gormley show.',
         image: '/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web.webp',
         items: [
@@ -188,6 +189,7 @@ const portfolioItems = [
         type: 'project',
         title: 'Nasher Mini Brochure',
         category: 'graphic design', subcategory: 'professional',
+        viewMode: 'spreads',
         description: 'Selected spreads and details from an updated museum guide designed to inform visitors on the museum\'s history and events.',
         image: '/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web.webp',
         items: [
@@ -210,6 +212,7 @@ const portfolioItems = [
         type: 'project',
         title: 'Nasher Pride Zine',
         category: 'graphic design', subcategory: 'professional',
+        viewMode: 'spreads',
         description: 'Early concept for a Pride Month-themed zine highlighting LGBTQ+ artists in the Nasher\'s collection.',
         image: '/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web.webp',
         items: [
@@ -324,6 +327,11 @@ function openProject(projectTitle) {
     currentProject = portfolioItems.find(p => p.type === 'project' && p.title === projectTitle);
     if (!currentProject) return;
 
+    if (currentProject.viewMode === 'spreads') {
+        openSpreadViewer(currentProject);
+        return;
+    }
+
     const modal = document.getElementById('project-modal');
     document.getElementById('modal-title').textContent = currentProject.title;
     document.getElementById('modal-desc').textContent = currentProject.description || '';
@@ -352,6 +360,40 @@ function openProject(projectTitle) {
 
 function closeModal() {
     document.getElementById('project-modal').classList.remove('open');
+    document.body.style.overflow = '';
+    document.body.style.overflowY = 'auto';
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SPREAD VIEWER  (for brochures, zines, anything with spreads)
+// ─────────────────────────────────────────────────────────────────────────────
+function openSpreadViewer(project) {
+    document.getElementById('spread-title').textContent = project.title;
+    const desc = document.getElementById('spread-desc');
+    desc.textContent = project.description || '';
+    desc.style.display = project.description ? '' : 'none';
+
+    const scroll = document.getElementById('spread-scroll');
+    scroll.innerHTML = project.items.map((sub, i) => {
+        const src = sub.image || buildImagePath(sub, project);
+        const fb = fallbackSrc(project.category, sub.title);
+        const meta = [sub.tool, sub.date].filter(Boolean).join(' · ');
+        return `
+        <div class="spread-img-wrap">
+          <span class="spread-index">${i + 1} / ${project.items.length}</span>
+          ${imgTag(src, sub.title, fb)}
+          <p class="spread-caption">${sub.title}${meta ? ' &nbsp;·&nbsp; ' + meta : ''}</p>
+        </div>`;
+    }).join('');
+
+    scroll.scrollTop = 0;
+    document.getElementById('spread-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    loadGalleryImages(scroll);
+}
+
+function closeSpreadViewer() {
+    document.getElementById('spread-modal').classList.remove('open');
     document.body.style.overflow = '';
     document.body.style.overflowY = 'auto';
 }
@@ -655,6 +697,12 @@ document.getElementById('project-modal').addEventListener('click', e => {
     if (e.target === e.currentTarget) closeModal();
 });
 
+// Spread viewer close
+document.getElementById('spread-close').addEventListener('click', closeSpreadViewer);
+document.getElementById('spread-modal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeSpreadViewer();
+});
+
 // Lightbox controls
 document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
 document.getElementById('lightbox-prev').addEventListener('click', () => lbNav(-1));
@@ -666,10 +714,13 @@ document.getElementById('lightbox').addEventListener('click', e => {
 // Keyboard: route to whichever layer is open
 document.addEventListener('keydown', e => {
     const lbOpen = document.getElementById('lightbox').classList.contains('open');
+    const spreadOpen = document.getElementById('spread-modal').classList.contains('open');
     if (lbOpen) {
         if (e.key === 'Escape') closeLightbox();
         if (e.key === 'ArrowLeft') lbNav(-1);
         if (e.key === 'ArrowRight') lbNav(1);
+    } else if (spreadOpen) {
+        if (e.key === 'Escape') closeSpreadViewer();
     } else {
         if (e.key === 'Escape') closeModal();
     }
