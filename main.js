@@ -109,7 +109,7 @@ const portfolioItems = [
             { title: 'Early Concept 9', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-9-illustrator-2025.webp' },
             { title: 'Early Concept 10', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-10-illustrator-2025.webp' },
             { title: 'Early Concept 11', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/adrian-early-concept-11-illustrator-2025.webp' },
-            { title: 'Detail View', tool: 'Illustrator', date: '2025', image: '/images/graphic-design/professional/adrian-album-covers/screenshot-2026-02-11-at-5-32-13-pm.webp' },
+
         ],
     },
     {
