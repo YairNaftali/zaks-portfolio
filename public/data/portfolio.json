@@ -984,16 +984,6 @@
   },
   {
     "type": "item",
-    "title": "Gigi",
-    "category": "misc",
-    "subcategory": "photo",
-    "tool": "Photo",
-    "date": "2024",
-    "description": "",
-    "image": "/images/misc/photo/gigi-photo-2024.webp"
-  },
-  {
-    "type": "item",
     "title": "Layla",
     "category": "misc",
     "subcategory": "photo",
@@ -1001,16 +991,6 @@
     "date": "2024",
     "description": "",
     "image": "/images/misc/photo/layla-photo-2024.webp"
-  },
-  {
-    "type": "item",
-    "title": "Leftovers",
-    "category": "misc",
-    "subcategory": "photo",
-    "tool": "Photo",
-    "date": "2024",
-    "description": "",
-    "image": "/images/misc/photo/leftovers-photo-2024.webp"
   },
   {
     "type": "item",
@@ -1031,35 +1011,5 @@
     "date": "2024",
     "description": "",
     "image": "/images/misc/photo/michelle-photo-2024.webp"
-  },
-  {
-    "type": "item",
-    "title": "Peter",
-    "category": "misc",
-    "subcategory": "photo",
-    "tool": "Photo",
-    "date": "2024",
-    "description": "",
-    "image": "/images/misc/photo/peter-photo-2024.webp"
-  },
-  {
-    "type": "item",
-    "title": "Sharan",
-    "category": "misc",
-    "subcategory": "photo",
-    "tool": "Photo",
-    "date": "2024",
-    "description": "",
-    "image": "/images/misc/photo/sharan-photo-2024.webp"
-  },
-  {
-    "type": "item",
-    "title": "Speed Limit",
-    "category": "misc",
-    "subcategory": "photo",
-    "tool": "Photo",
-    "date": "2024",
-    "description": "",
-    "image": "/images/misc/photo/speed-limit-photo-2024.webp"
   }
 ]
