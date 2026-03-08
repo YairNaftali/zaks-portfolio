@@ -84,47 +84,7 @@ function openProject(projectTitle) {
     currentProject = portfolioItems.find(p => p.type === 'project' && p.title === projectTitle);
     if (!currentProject) return;
 
-    if (currentProject.viewMode === 'spreads') {
-        openSpreadViewer(currentProject);
-        return;
-    }
-
-    const modal = document.getElementById('project-modal');
-    document.getElementById('modal-title').textContent = currentProject.title;
-    document.getElementById('modal-desc').textContent = currentProject.description || '';
-
-    const grid = document.getElementById('modal-grid');
-    grid.innerHTML = '';
-
-    if (projectNodeCache.has(currentProject.title)) {
-        grid.appendChild(projectNodeCache.get(currentProject.title));
-    } else {
-        const container = document.createElement('div');
-        container.style.display = 'contents';
-
-        if (currentProject.items.length === 0) {
-            container.innerHTML = `<p class="modal-empty">Images coming soon — drop them in:<br><code>public/images/${toSlug(currentProject.category)}/${toSlug(currentProject.subcategory || currentProject.title)}/</code></p>`;
-        } else {
-            container.innerHTML = currentProject.items.map(sub => {
-                const src = sub.image || buildImagePath(sub, currentProject);
-                const fb = fallbackSrc(currentProject.category, sub.title);
-                const meta = [sub.tool, sub.date].filter(Boolean).join(', ');
-                return `
-        <div class="modal-item" data-title="${sub.title.replace(/"/g, '&quot;')}">
-          ${imgTag(src, sub.title, fb)}
-          <p class="modal-item-title">${sub.title}</p>
-          ${meta ? `<p class="modal-item-meta">${meta}</p>` : ''}
-        </div>`;
-            }).join('');
-        }
-
-        projectNodeCache.set(currentProject.title, container);
-        grid.appendChild(container);
-        loadGalleryImages(container);
-    }
-
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    openSpreadViewer(currentProject);
 }
 
 function closeModal() {
@@ -158,7 +118,6 @@ function openSpreadViewer(project) {
             const meta = [sub.tool, sub.date].filter(Boolean).join(' · ');
             return `
         <div class="spread-img-wrap">
-          <span class="spread-index">${i + 1} / ${project.items.length}</span>
           ${imgTag(src, sub.title, fb)}
           <p class="spread-caption">${sub.title}${meta ? ' &nbsp;·&nbsp; ' + meta : ''}</p>
         </div>`;

@@ -228,45 +228,54 @@ section {
 }
 
 .about-portrait {
-    width: clamp(140px, 18vw, 240px);
+    width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     object-position: top;
-    border-radius: 6px;
     flex-shrink: 0;
-    box-shadow: 0 4px 20px rgba(178, 60, 34, 0.15);
     display: block;
-    width: 100%;
 }
 
 .about-photo-col {
-    width: clamp(140px, 18vw, 240px);
+    width: clamp(240px, 35vw, 420px);
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+}
+
+.about-text-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
 }
 
 .resume-btn {
-    display: block;
-    width: 100%;
-    padding: 0.65em 1em;
-    background-color: var(--color-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5em 0.5em 0.5em 0.8em;
+    background-color: #8c2a15;
     color: var(--color-light);
-    border: 2px solid var(--color-light);
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    text-align: center;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    line-height: 1;
+    letter-spacing: 0.5px;
     text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.2s, color 0.2s;
+    transition: transform 0.2s, background-color 0.2s;
+    margin-top: 0.5rem;
 }
 
 .resume-btn:hover {
-    background-color: var(--color-light);
-    color: var(--color-dark);
-    border-color: var(--color-dark);
+    background-color: #722010;
+    color: var(--color-light);
+    transform: translateY(-2px);
+}
+
+.resume-icon {
+    display: block;
+    width: 1.4rem;
+    height: 1.4rem;
 }
 
 h2 {
@@ -1221,7 +1230,7 @@ textarea:focus {
 
     .about-photo-col {
         width: 100%;
-        max-width: 220px;
+        max-width: 400px;
     }
 
     .about-portrait {
@@ -1444,6 +1453,7 @@ textarea:focus {
     line-height: 1.55;
     padding: 1rem 1.5rem 0;
     flex-shrink: 0;
+    max-width: none;
 }
 
 .spread-scroll {
