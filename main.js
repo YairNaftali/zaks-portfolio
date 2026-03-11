@@ -128,9 +128,13 @@ function openSpreadViewer(project) {
         loadGalleryImages(container);
     }
 
-    scroll.scrollTop = 0;
     document.getElementById('spread-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
+
+    // Must reset scrollTop after the modal is display: flex so the browser registers its height
+    requestAnimationFrame(() => {
+        scroll.scrollTop = 0;
+    });
 }
 
 function closeSpreadViewer() {
@@ -200,12 +204,13 @@ const CATEGORIES = ['all', 'illustration', 'graphic design', 'misc'];
 
 function renderGallery(category = 'all', subcategory = null) {
     const gallery = document.getElementById('gallery-grid');
+    const carouselContainer = document.querySelector('.carousel-container');
     const workHeading = document.querySelector('.work-heading span');
     const footnote = document.querySelector('.gallery-footnote');
     const exploreHome = document.getElementById('explore-home');
 
     const isAll = category === 'all' && !subcategory;
-    if (workHeading) workHeading.textContent = isAll ? 'SELECTED WORK*' : 'WORK';
+    if (workHeading) workHeading.textContent = isAll ? 'SELECTED WORK' : 'WORK';
     if (footnote) footnote.style.display = isAll ? '' : 'none';
     if (exploreHome) exploreHome.style.display = 'flex';
 
@@ -216,6 +221,15 @@ function renderGallery(category = 'all', subcategory = null) {
         items = items.filter(i => i.subcategory === subcategory);
     }
     currentGalleryItems = items;
+
+    // Toggling layouts
+    if (isAll) {
+        gallery.className = 'gallery-carousel';
+        carouselContainer.classList.remove('is-grid');
+    } else {
+        gallery.className = 'gallery-grid';
+        carouselContainer.classList.add('is-grid');
+    }
 
     gallery.innerHTML = items.map(item => {
         const meta = item.type === 'item' ? [item.tool, item.date].filter(Boolean).join(', ') : '';
@@ -329,15 +343,54 @@ function getPageFromHash() {
 }
 
 function renderSplash() {
-    const pool = portfolioItems.filter(i => i.type === 'item');
-    const picks = pool.sort(() => Math.random() - 0.5).slice(0, 3);
+    const SELECTED_WORK_TITLES = [
+        "Adrian Album Covers",
+        "Touch Fuzzy",
+        "Who Do I Know",
+        "Bucky",
+        "FFS Ads",
+        "Heartwork in the Garden",
+        "Drip",
+        "Infinity",
+        "Hello Dumpling Mural"
+    ];
+
+    // Guarantee the exact order specified by the user
+    const picks = SELECTED_WORK_TITLES.map(title =>
+        portfolioItems.find(i => i.title === title)
+    ).filter(Boolean);
+
     currentGalleryItems = picks;
+
     const gallery = document.getElementById('gallery-grid');
+    const carouselContainer = document.querySelector('.carousel-container');
+
+    // Ensure splash is formatted as carousel
+    gallery.className = 'gallery-carousel';
+    carouselContainer.classList.remove('is-grid');
+
     gallery.innerHTML = picks.map(item => {
-        const src = item.image || buildImagePath(item);
-        const fb = fallbackSrc(item.category, item.title);
-        const meta = [item.tool, item.date].filter(Boolean).join(', ');
-        return `
+        const meta = item.type === 'item' ? [item.tool, item.date].filter(Boolean).join(', ') : '';
+
+        if (item.type === 'project') {
+            const coverSrc = item.image || (item.items[0] && item.items[0].image) || null;
+            const coverFb = fallbackSrc(item.category, item.title);
+            const count = item.items.length;
+            return `
+        <div class="gallery-item project-card" data-category="${item.category}" data-project="${item.title.replace(/"/g, '&quot;')}">
+          <div class="item-img-wrap">
+            ${coverSrc ? imgTag(coverSrc, item.title, coverFb) : `<div class="img-placeholder" style="background:var(--color-pink)"></div>`}
+            <div class="folder-badge">${count > 0 ? count + ' pieces' : 'Project'}</div>
+            <div class="item-overlay">
+              <span class="overlay-title">${item.title}</span>
+              <span class="overlay-meta">Click to open →</span>
+            </div>
+          </div>
+        </div>`;
+        } else {
+            const src = item.image || buildImagePath(item);
+            const fb = fallbackSrc(item.category, item.title);
+            return `
         <div class="gallery-item" data-category="${item.category}" data-title="${item.title.replace(/"/g, '&quot;')}">
           <div class="item-img-wrap">
             ${imgTag(src, item.title, fb)}
@@ -347,7 +400,9 @@ function renderSplash() {
             </div>
           </div>
         </div>`;
+        }
     }).join('');
+
     loadGalleryImages(gallery);
     showSubfilters('all'); // hide subcategory bar
     const exploreHome = document.getElementById('explore-home');
@@ -379,6 +434,15 @@ document.querySelector('.hero-nav').addEventListener('click', e => {
     const hash = new URL(link.href).hash;
     history.pushState(null, '', hash);
     navigatePage();
+});
+
+// Carousel Controls
+const trackWrap = document.querySelector('.carousel-track-wrap');
+document.getElementById('carousel-prev').addEventListener('click', () => {
+    if (trackWrap) trackWrap.scrollBy({ left: -trackWrap.clientWidth / 2, behavior: 'smooth' });
+});
+document.getElementById('carousel-next').addEventListener('click', () => {
+    if (trackWrap) trackWrap.scrollBy({ left: trackWrap.clientWidth / 2, behavior: 'smooth' });
 });
 
 window.addEventListener('hashchange', navigatePage);

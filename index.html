@@ -6,14 +6,14 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Zak's 2026 Portfolio — Drawing, Painting, Graphic Design & More" />
+  <meta name="description" content="Zak Goldstein's 2026 Portfolio — Drawing, Painting, Graphic Design & More" />
   <link rel="preload" href="/fonts/steelfish-bold.otf" as="font" type="font/otf" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
-  <title>Zak's Portfolio</title>
+  <title>Zak Goldstein</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
   <!-- ─── ANIMATED HERO HEADER ─────────────────────────────────────────── -->
   <header class="hero">
     <div class="hero-section top-door">
-      <h1 class="anton-header text-orange">ZAK'S</h1>
+      <h1 class="anton-header text-orange">ZAK</h1>
     </div>
     <div class="hero-section middle-section">
       <nav class="hero-nav" aria-label="Portfolio sections">
@@ -38,13 +38,7 @@
             <path d="M2 7l10 7 10-7" />
           </svg>
         </a>
-        <a href="tel:+12146047353" class="hero-social-link" aria-label="Phone">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path
-              d="M6.6 10.8a15.7 15.7 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.25 1z" />
-          </svg>
-        </a>
+
         <a href="https://www.instagram.com/goldzed_/" target="_blank" rel="noopener" class="hero-social-link"
           aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
@@ -57,7 +51,7 @@
       </div>
     </div>
     <div class="hero-section bottom-door">
-      <h1 class="anton-header text-orange">PORTFOLIO</h1>
+      <h1 class="anton-header text-orange">GOLDSTEIN</h1>
     </div>
   </header>
 
@@ -98,7 +92,7 @@
     <!-- Portfolio Gallery -->
     <section class="gallery-section" id="work">
       <h2 class="work-heading">
-        <span>SELECTED WORK*</span>
+        <span>SELECTED WORK</span>
         <!-- Subcategory filter bar (shown when a category is active) inline with WORK -->
         <div id="subcategory-filters" class="filter-bar sub-filter-bar" role="group" aria-label="Filter by subcategory">
         </div>
@@ -107,9 +101,16 @@
       <!-- Category filter bar (hidden by CSS since hero nav routing was added) -->
       <div id="category-filters" class="filter-bar" role="group" aria-label="Filter by category"></div>
 
-      <!-- Dynamic grid injected by main.js -->
-      <div id="gallery-grid" class="gallery-grid"></div>
-      <p class="gallery-footnote">* Selection is randomized on every refresh</p>
+      <!-- Carousel Container -->
+      <div class="carousel-container">
+        <button id="carousel-prev" class="carousel-btn prev" aria-label="Previous items">&#8592;</button>
+        <div class="carousel-track-wrap">
+          <div id="gallery-grid" class="gallery-carousel"></div>
+        </div>
+        <button id="carousel-next" class="carousel-btn next" aria-label="Next items">&#8594;</button>
+      </div>
+
+
       <div class="explore-home" id="explore-home" style="display:none">
         <a href="/" class="explore-home-btn" title="Explore other media">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"

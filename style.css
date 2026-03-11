@@ -222,7 +222,7 @@ section {
 
 .about-inner {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 2.5rem;
     margin-top: 1.5rem;
 }
@@ -241,6 +241,7 @@ section {
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    margin-top: 3rem;
 }
 
 .about-text-col {
@@ -415,12 +416,94 @@ p {
     opacity: 0.85;
 }
 
-/* ─── GALLERY GRID ───────────────────────────────────────────────────────── */
+/* ─── GALLERY CAROUSEL ─────────────────────────────────────────────────────── */
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 2.5rem;
+    gap: 1rem;
+}
+
+/* When the container holds a standard grid, reset flex layout */
+.carousel-container.is-grid {
+    display: block;
+    /* Remove flex alignment so grid takes full width */
+}
+
+.carousel-container.is-grid .carousel-btn {
+    display: none;
+    /* Hide arrows in grid view */
+}
+
+.carousel-container.is-grid .carousel-track-wrap {
+    overflow: visible;
+    /* Let grid grow naturally downwards */
+}
+
+/* ─── GALLERY GRID / TRACK ───────────────────────────────────────────────── */
+.carousel-track-wrap {
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    /* Hide scrollbar for cleaner look */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carousel-track-wrap::-webkit-scrollbar {
+    display: none;
+}
+
+/* Carousel Mode (Active on home) */
+.gallery-carousel {
+    display: flex;
+    gap: 2rem;
+    /* Allow items to determine their own width but don't shrink them */
+}
+
+/* Base style overrides for carousel items relative to grid */
+.gallery-carousel .gallery-item {
+    flex: 0 0 calc(33.333% - 1.33rem);
+    /* 3 items visible by default */
+    min-width: 250px;
+}
+
+/* Grid Mode (Active on category pages) */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-top: 2.5rem;
+    width: 100%;
+}
+
+/* Ensure grid items don't keep the carousel flex bases */
+.gallery-grid .gallery-item {
+    flex: none;
+    min-width: 0;
+}
+
+.carousel-btn {
+    flex-shrink: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--color-orange);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: #8c2a15;
+    transform: scale(1.05);
 }
 
 .gallery-footnote {
@@ -683,15 +766,16 @@ textarea:focus {
 }
 
 .submit-btn {
-    background-color: var(--color-orange);
-    color: white;
+    background-color: #8c2a15;
+    color: var(--color-light);
     font-family: var(--font-display);
-    font-size: 1.4rem;
+    font-size: 2.2rem;
+    line-height: 1;
     border: none;
-    padding: 1rem 2rem;
+    padding: 0.5em 0.8em;
     cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.25s ease, transform 0.15s ease;
+    border-radius: 0px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
     letter-spacing: 0.5px;
     align-self: flex-start;
 }
@@ -1475,8 +1559,12 @@ textarea:focus {
 
 .spread-img-wrap img {
     width: 100%;
+    max-width: 600px;
+    /* Reduced from 100% full width */
     height: auto;
     display: block;
+    margin: 0 auto;
+    /* Center the image in its wrap */
     border-radius: 6px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     opacity: 0;
