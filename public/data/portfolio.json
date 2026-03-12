@@ -273,67 +273,67 @@
     "category": "graphic design",
     "subcategory": "personal",
     "description": "Design mock-ups for an interactive street art piece where visitors can \"graffiti bomb\" a stop sign.",
-    "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered-18.webp",
+    "image": "/images/graphic-design/personal/street-sign-stickers/stickers-1.webp",
     "items": [
       {
         "title": "Sticker 1",
         "tool": "Illustrator",
         "date": "2024",
-        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered-18.webp"
+        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-1.webp"
       },
       {
         "title": "Sticker 2",
         "tool": "Illustrator",
         "date": "2024",
-        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered-19.webp"
+        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-2.webp"
       },
       {
         "title": "Sticker 3",
         "tool": "Illustrator",
         "date": "2024",
-        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered-20.webp"
+        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-3.webp"
       },
       {
         "title": "Sticker 4",
         "tool": "Illustrator",
         "date": "2024",
-        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered-21.webp"
+        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-4.webp"
       },
       {
         "title": "Sticker 5",
         "tool": "Illustrator",
         "date": "2024",
-        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered-22.webp"
+        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-5.webp"
       },
       {
         "title": "Sticker 6",
         "tool": "Illustrator",
         "date": "2024",
-        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered-23.webp"
+        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-6.webp"
       },
       {
         "title": "Sticker 7",
         "tool": "Illustrator",
         "date": "2024",
-        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered-24.webp"
+        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-7.webp"
       },
       {
         "title": "Sticker 8",
         "tool": "Illustrator",
         "date": "2024",
-        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered-25.webp"
+        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-8.webp"
       },
       {
         "title": "Sticker 9",
         "tool": "Illustrator",
         "date": "2024",
-        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered-26.webp"
+        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-9.webp"
       },
       {
         "title": "Sticker 10",
         "tool": "Illustrator",
         "date": "2024",
-        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-recovered.webp"
+        "image": "/images/graphic-design/personal/street-sign-stickers/stickers-10.webp"
       }
     ]
   },
@@ -373,19 +373,19 @@
     "category": "graphic design",
     "subcategory": "professional",
     "description": "Final cover and gatefold designs for the vinyl pressing of \"Here to Love You\", plus early album cover sketches for Berklee instructor Adrian Sicam's upcoming LP.",
-    "image": "/images/graphic-design/professional/adrian-album-covers/adrian-final-album-front-back-illustrator-2025.webp",
+    "image": "/images/graphic-design/professional/adrian-album-covers/adrian-albums-web-49.webp",
     "items": [
       {
         "title": "Final Cover Front & Back",
-        "tool": "Illustrator",
+        "tool": "illustrator",
         "date": "2025",
-        "image": "/images/graphic-design/professional/adrian-album-covers/adrian-final-album-front-back-illustrator-2025.webp"
+        "image": "/images/graphic-design/professional/adrian-album-covers/adrian-albums-web-49.webp"
       },
       {
         "title": "Final Gatefold",
-        "tool": "Illustrator",
+        "tool": "illustrator",
         "date": "2025",
-        "image": "/images/graphic-design/professional/adrian-album-covers/adrian-final-album-cover-gatefold-illustrator-2025.webp"
+        "image": "/images/graphic-design/professional/adrian-album-covers/adrian-albums-web-39.webp"
       },
       {
         "title": "Early Concept 1",
@@ -524,20 +524,8 @@
     "subcategory": "professional",
     "viewMode": "spreads",
     "description": "Selected spreads from a translated and reformatted exhibit guide to help Spanish-speaking visitors navigate the Gormley show.",
-    "image": "/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web.webp",
+    "image": "/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web5.webp",
     "items": [
-      {
-        "title": "Spread 1",
-        "tool": "InDesign",
-        "date": "2025",
-        "image": "/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web.webp"
-      },
-      {
-        "title": "Spread 3",
-        "tool": "InDesign",
-        "date": "2025",
-        "image": "/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web3.webp"
-      },
       {
         "title": "Spread 5",
         "tool": "InDesign",
@@ -567,12 +555,6 @@
         "tool": "InDesign",
         "date": "2025",
         "image": "/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web10.webp"
-      },
-      {
-        "title": "Spread 11",
-        "tool": "InDesign",
-        "date": "2025",
-        "image": "/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web11.webp"
       }
     ]
   },
@@ -634,37 +616,37 @@
     "category": "graphic design",
     "subcategory": "professional",
     "description": "Logo concept and final logomarks designed for musician Martin Kindley.",
-    "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-final-illustrator-2025.webp",
+    "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-4-illustrator-2025.webp",
     "items": [
-      {
-        "title": "Final Logo",
-        "tool": "Illustrator",
-        "date": "2025",
-        "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-final-illustrator-2025.webp"
-      },
-      {
-        "title": "Concept 1",
-        "tool": "Illustrator",
-        "date": "2025",
-        "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-1-illustrator-2025.webp"
-      },
-      {
-        "title": "Concept 2",
-        "tool": "Illustrator",
-        "date": "2025",
-        "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-2-illustrator-2025.webp"
-      },
-      {
-        "title": "Concept 3",
-        "tool": "Illustrator",
-        "date": "2025",
-        "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-3-illustrator-2025.webp"
-      },
       {
         "title": "Concept 4",
         "tool": "Illustrator",
         "date": "2025",
         "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-4-illustrator-2025.webp"
+      },
+      {
+        "title": "Concept 1",
+        "tool": "illustrator",
+        "date": "2025",
+        "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-1-illustrator-2025-modified.webp"
+      },
+      {
+        "title": "Concept 3",
+        "tool": "illustrator",
+        "date": "2025",
+        "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-3-illustrator-2025-modified.webp"
+      },
+      {
+        "title": "Concept 3 (Alt)",
+        "tool": "illustrator",
+        "date": "2025",
+        "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-3-illustrator-2025-copy.webp"
+      },
+      {
+        "title": "Concept 4",
+        "tool": "illustrator",
+        "date": "2025",
+        "image": "/images/graphic-design/professional/martin-kindley-logo/martin-kindley-logo-concept-4-illustrator-2025-modified.webp"
       }
     ]
   },
@@ -748,12 +730,6 @@
         "tool": "InDesign",
         "date": "2025",
         "image": "/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web19.webp"
-      },
-      {
-        "title": "Spread 20",
-        "tool": "InDesign",
-        "date": "2025",
-        "image": "/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web20.webp"
       }
     ]
   },
@@ -791,22 +767,10 @@
         "image": "/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web5.webp"
       },
       {
-        "title": "Spread 6",
-        "tool": "InDesign",
-        "date": "2025",
-        "image": "/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web6.webp"
-      },
-      {
         "title": "Spread 7",
         "tool": "InDesign",
         "date": "2025",
         "image": "/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web7.webp"
-      },
-      {
-        "title": "Spread 9",
-        "tool": "InDesign",
-        "date": "2025",
-        "image": "/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web9.webp"
       }
     ]
   },
@@ -816,13 +780,31 @@
     "category": "graphic design",
     "subcategory": "professional",
     "description": "Proposed logo concepts and final logomarks for a rebrand of Dallas-based autism awareness association Sensory Days Dallas.",
-    "image": "/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concepts-illustrator-2025.webp",
+    "image": "/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concept-1-illustrator-2025.webp",
     "items": [
       {
         "title": "Logo Concepts",
-        "tool": "Illustrator",
+        "tool": "illustrator",
         "date": "2025",
-        "image": "/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concepts-illustrator-2025.webp"
+        "image": "/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concept-1-illustrator-2025.webp"
+      },
+      {
+        "title": "Concept 2",
+        "tool": "illustrator",
+        "date": "2025",
+        "image": "/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concept-2-illustrator-2025.webp"
+      },
+      {
+        "title": "Concept 3",
+        "tool": "illustrator",
+        "date": "2025",
+        "image": "/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concept-3-illustrator-2025.webp"
+      },
+      {
+        "title": "Concept 4",
+        "tool": "illustrator",
+        "date": "2025",
+        "image": "/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-concept-4-illustrator-2025.webp"
       },
       {
         "title": "Final Logo",
@@ -934,6 +916,26 @@
   },
   {
     "type": "item",
+    "title": "Embrace",
+    "category": "misc",
+    "subcategory": "photo",
+    "tool": "photo",
+    "date": "2024",
+    "description": "",
+    "image": "/images/misc/photo/embrace-2024-photo.webp"
+  },
+  {
+    "type": "item",
+    "title": "Speed Limit",
+    "category": "misc",
+    "subcategory": "photo",
+    "tool": "photo",
+    "date": "2024",
+    "description": "",
+    "image": "/images/misc/photo/speed-limit-photo-2024.webp"
+  },
+  {
+    "type": "item",
     "title": "The Beauty of Nature (or Whatever)",
     "category": "misc",
     "subcategory": "photo",
@@ -961,16 +963,6 @@
     "date": "2024",
     "description": "",
     "image": "/images/misc/photo/bedroom-photo-2024.webp"
-  },
-  {
-    "type": "item",
-    "title": "Candid",
-    "category": "misc",
-    "subcategory": "photo",
-    "tool": "Photo",
-    "date": "2024",
-    "description": "",
-    "image": "/images/misc/photo/candid-photo-2024.webp"
   },
   {
     "type": "item",
