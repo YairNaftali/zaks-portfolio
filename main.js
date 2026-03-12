@@ -78,19 +78,11 @@ function loadGalleryImages(container) {
 let currentProject = null;
 let currentGalleryItems = [];
 
-const projectNodeCache = new Map();
-
 function openProject(projectTitle) {
     currentProject = portfolioItems.find(p => p.type === 'project' && p.title === projectTitle);
     if (!currentProject) return;
 
     openSpreadViewer(currentProject);
-}
-
-function closeModal() {
-    document.getElementById('project-modal').classList.remove('open');
-    document.body.style.overflow = '';
-    document.body.style.overflowY = 'auto';
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -180,7 +172,6 @@ function lbRender() {
     const caption = document.getElementById('lightbox-caption');
     titleEl.textContent = cur.title || '';
     metaEl.textContent = cur.meta || '';
-    descEl.textContent = cur.description || '';
     descEl.classList.toggle('desc-empty', !cur.description);
     descEl.textContent = cur.description || 'Description coming soon.';
     caption.style.display = cur.title ? '' : 'none';
@@ -200,18 +191,48 @@ function closeLightbox() {
 // ─────────────────────────────────────────────────────────────────────────────
 // GALLERY RENDERER
 // ─────────────────────────────────────────────────────────────────────────────
-const CATEGORIES = ['all', 'illustration', 'graphic design', 'misc'];
+
+// Renders a single gallery card (project folder or regular item)
+function renderCard(item) {
+    const meta = item.type === 'item' ? [item.tool, item.date].filter(Boolean).join(', ') : '';
+    if (item.type === 'project') {
+        const coverSrc = item.image || (item.items[0] && item.items[0].image) || null;
+        const coverFb = fallbackSrc(item.category, item.title);
+        const count = item.items.length;
+        return `
+      <div class="gallery-item project-card" data-category="${item.category}" data-project="${item.title.replace(/"/g, '&quot;')}">
+        <div class="item-img-wrap">
+          ${coverSrc ? imgTag(coverSrc, item.title, coverFb) : `<div class="img-placeholder" style="background:var(--color-pink)"></div>`}
+          <div class="folder-badge">${count > 0 ? count + ' pieces' : 'Project'}</div>
+          <div class="item-overlay">
+            <span class="overlay-title">${item.title}</span>
+            <span class="overlay-meta">Click to open →</span>
+          </div>
+        </div>
+      </div>`;
+    }
+    const src = item.image || buildImagePath(item);
+    const fb = fallbackSrc(item.category, item.title);
+    return `
+      <div class="gallery-item" data-category="${item.category}" data-title="${item.title.replace(/"/g, '&quot;')}">
+        <div class="item-img-wrap">
+          ${imgTag(src, item.title, fb)}
+          <div class="item-overlay">
+            <span class="overlay-title">${item.title}</span>
+            <span class="overlay-meta">${meta}</span>
+          </div>
+        </div>
+      </div>`;
+}
 
 function renderGallery(category = 'all', subcategory = null) {
     const gallery = document.getElementById('gallery-grid');
     const carouselContainer = document.querySelector('.carousel-container');
     const workHeading = document.querySelector('.work-heading span');
-    const footnote = document.querySelector('.gallery-footnote');
     const exploreHome = document.getElementById('explore-home');
 
     const isAll = category === 'all' && !subcategory;
     if (workHeading) workHeading.textContent = isAll ? 'SELECTED WORK' : 'WORK';
-    if (footnote) footnote.style.display = isAll ? '' : 'none';
     if (exploreHome) exploreHome.style.display = 'flex';
 
     let items = isAll
@@ -231,45 +252,7 @@ function renderGallery(category = 'all', subcategory = null) {
         carouselContainer.classList.add('is-grid');
     }
 
-    gallery.innerHTML = items.map(item => {
-        const meta = item.type === 'item' ? [item.tool, item.date].filter(Boolean).join(', ') : '';
-        const subcatBadge = item.subcategory
-            ? `<span class="item-subcategory">${item.subcategory}</span>`
-            : '';
-
-        if (item.type === 'project') {
-            // ── PROJECT / FOLDER CARD ──────────────────────────────────────────────
-            // Use explicit cover image, or first sub-item image, or placeholder
-            const coverSrc = item.image || (item.items[0] && item.items[0].image) || null;
-            const coverFb = fallbackSrc(item.category, item.title);
-            const count = item.items.length;
-            return `
-        <div class="gallery-item project-card" data-category="${item.category}" data-project="${item.title.replace(/"/g, '&quot;')}">
-          <div class="item-img-wrap">
-            ${coverSrc ? imgTag(coverSrc, item.title, coverFb) : `<div class="img-placeholder" style="background:var(--color-pink)"></div>`}
-            <div class="folder-badge">${count > 0 ? count + ' pieces' : 'Project'}</div>
-            <div class="item-overlay">
-              <span class="overlay-title">${item.title}</span>
-              <span class="overlay-meta">Click to open →</span>
-            </div>
-          </div>
-        </div>`;
-        } else {
-            // ── REGULAR ITEM CARD ──────────────────────────────────────────────────
-            const src = item.image || buildImagePath(item);
-            const fb = fallbackSrc(item.category, item.title);
-            return `
-        <div class="gallery-item" data-category="${item.category}" data-title="${item.title.replace(/"/g, '&quot;')}">
-          <div class="item-img-wrap">
-            ${imgTag(src, item.title, fb)}
-            <div class="item-overlay">
-              <span class="overlay-title">${item.title}</span>
-              <span class="overlay-meta">${meta}</span>
-            </div>
-          </div>
-        </div>`;
-        }
-    }).join('');
+    gallery.innerHTML = items.map(renderCard).join('');
 
     // Preload images without flashing
     loadGalleryImages(gallery);
@@ -352,7 +335,8 @@ function renderSplash() {
         "Heartwork in the Garden",
         "Drip",
         "Infinity",
-        "Hello Dumpling Mural"
+        "Hello Dumpling Mural",
+        "Proteinz in Motion"
     ];
 
     // Guarantee the exact order specified by the user
@@ -369,39 +353,7 @@ function renderSplash() {
     gallery.className = 'gallery-carousel';
     carouselContainer.classList.remove('is-grid');
 
-    gallery.innerHTML = picks.map(item => {
-        const meta = item.type === 'item' ? [item.tool, item.date].filter(Boolean).join(', ') : '';
-
-        if (item.type === 'project') {
-            const coverSrc = item.image || (item.items[0] && item.items[0].image) || null;
-            const coverFb = fallbackSrc(item.category, item.title);
-            const count = item.items.length;
-            return `
-        <div class="gallery-item project-card" data-category="${item.category}" data-project="${item.title.replace(/"/g, '&quot;')}">
-          <div class="item-img-wrap">
-            ${coverSrc ? imgTag(coverSrc, item.title, coverFb) : `<div class="img-placeholder" style="background:var(--color-pink)"></div>`}
-            <div class="folder-badge">${count > 0 ? count + ' pieces' : 'Project'}</div>
-            <div class="item-overlay">
-              <span class="overlay-title">${item.title}</span>
-              <span class="overlay-meta">Click to open →</span>
-            </div>
-          </div>
-        </div>`;
-        } else {
-            const src = item.image || buildImagePath(item);
-            const fb = fallbackSrc(item.category, item.title);
-            return `
-        <div class="gallery-item" data-category="${item.category}" data-title="${item.title.replace(/"/g, '&quot;')}">
-          <div class="item-img-wrap">
-            ${imgTag(src, item.title, fb)}
-            <div class="item-overlay">
-              <span class="overlay-title">${item.title}</span>
-              <span class="overlay-meta">${meta}</span>
-            </div>
-          </div>
-        </div>`;
-        }
-    }).join('');
+    gallery.innerHTML = picks.map(renderCard).join('');
 
     loadGalleryImages(gallery);
     showSubfilters('all'); // hide subcategory bar
@@ -447,11 +399,6 @@ document.getElementById('carousel-next').addEventListener('click', () => {
 
 window.addEventListener('hashchange', navigatePage);
 
-function initFilters() {
-    // Category-level filter bar is hidden; subcategory bar still works.
-    // Called from init to keep the subcategory system wired (showSubfilters uses it).
-}
-
 // ─────────────────────────────────────────────────────────────────────────────
 // CONTACT FORM
 // ─────────────────────────────────────────────────────────────────────────────
@@ -495,13 +442,8 @@ document.querySelector('#contact-form').addEventListener('submit', async e => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// MODAL CLOSE EVENTS
+// MODAL / LIGHTBOX CLOSE EVENTS
 // ─────────────────────────────────────────────────────────────────────────────
-document.getElementById('modal-close').addEventListener('click', closeModal);
-document.getElementById('project-modal').addEventListener('click', e => {
-    if (e.target === e.currentTarget) closeModal();
-});
-
 // Spread viewer close
 document.getElementById('spread-close').addEventListener('click', closeSpreadViewer);
 document.getElementById('spread-modal').addEventListener('click', e => {
@@ -526,8 +468,6 @@ document.addEventListener('keydown', e => {
         if (e.key === 'ArrowRight') lbNav(1);
     } else if (spreadOpen) {
         if (e.key === 'Escape') closeSpreadViewer();
-    } else {
-        if (e.key === 'Escape') closeModal();
     }
 });
 
@@ -555,20 +495,6 @@ document.getElementById('gallery-grid').addEventListener('click', e => {
     openLightbox(lbItems, Math.max(0, idx));
 });
 
-// Modal grid: clicking an image opens lightbox scoped to that project
-document.getElementById('modal-grid').addEventListener('click', e => {
-    const item = e.target.closest('.modal-item[data-title]');
-    if (item && currentProject) {
-        const clickedTitle = item.dataset.title;
-        const idx = currentProject.items.findIndex(i => i.title === clickedTitle);
-        const lbItems = currentProject.items.map(sub => ({
-            src: sub.image || buildImagePath(sub, currentProject),
-            alt: sub.title,
-        }));
-        openLightbox(lbItems, Math.max(0, idx));
-    }
-});
-
 // Always start at the top on page load/refresh
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
@@ -582,8 +508,7 @@ setTimeout(() => { document.body.style.overflowY = 'auto'; }, 2000);
 // ─────────────────────────────────────────────────────────────────────────────
 async function initApp() {
     await loadPortfolioData();
-    initFilters();
-    navigatePage(); // routes via hash, or renders all if no hash
+    navigatePage(); // routes via hash, or renders splash if no hash
 }
 
 initApp();
