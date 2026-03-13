@@ -196,7 +196,7 @@ function closeLightbox() {
 function renderCard(item) {
     const meta = item.type === 'item' ? [item.tool, item.date].filter(Boolean).join(', ') : '';
     if (item.type === 'project') {
-        const coverSrc = item.image || (item.items[0] && item.items[0].image) || null;
+        const coverSrc = item.thumbnail || item.image || (item.items[0] && item.items[0].image) || null;
         const coverFb = fallbackSrc(item.category, item.title);
         const count = item.items.length;
         return `
@@ -211,7 +211,7 @@ function renderCard(item) {
         </div>
       </div>`;
     }
-    const src = item.image || buildImagePath(item);
+    const src = item.thumbnail || item.image || buildImagePath(item);
     const fb = fallbackSrc(item.category, item.title);
     return `
       <div class="gallery-item" data-category="${item.category}" data-title="${item.title.replace(/"/g, '&quot;')}">

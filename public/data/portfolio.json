@@ -7,7 +7,8 @@
     "tool": "Procreate",
     "date": "2025",
     "description": "Illustrated diagram commissioned by General Surgeon Racquel Gaetani (Beth Israel) to help patients understand the colostomy procedure.",
-    "image": "/images/drawing/medical/colostomy-procreate-2025.webp"
+    "image": "/images/drawing/medical/colostomy-procreate-2025.webp",
+    "thumbnail": "/images/thumbnails/colostomy.webp"
   },
   {
     "type": "item",
@@ -17,7 +18,8 @@
     "tool": "Procreate",
     "date": "2025",
     "description": "Illustrated diagram commissioned by General Surgeon Racquel Gaetani (Beth Israel) to help patients understand the colostomy procedure.",
-    "image": "/images/drawing/medical/cosotomy-detail-procreate-2025.webp"
+    "image": "/images/drawing/medical/cosotomy-detail-procreate-2025.webp",
+    "thumbnail": "/images/thumbnails/colostomy-detail.webp"
   },
   {
     "type": "item",
@@ -27,7 +29,8 @@
     "tool": "Pencil",
     "date": "2023",
     "description": "Commissioned illustration to advertise and commemorate the opening of Methodist's Center for Simulation and Wellness to surgery residents.",
-    "image": "/images/drawing/medical/davinci-pencil-2023.webp"
+    "image": "/images/drawing/medical/davinci-pencil-2023.webp",
+    "thumbnail": "/images/thumbnails/davinci.webp"
   },
   {
     "type": "item",
@@ -37,7 +40,8 @@
     "tool": "Color Pencil",
     "date": "2024",
     "description": "Commissioned wall piece for Methodist Health System's newest clinic at Bonton Farms.",
-    "image": "/images/drawing/medical/heartwork-in-the-graden-color-pencil-2024.webp"
+    "image": "/images/drawing/medical/heartwork-in-the-graden-color-pencil-2024.webp",
+    "thumbnail": "/images/thumbnails/heartwork.webp"
   },
   {
     "type": "item",
@@ -87,7 +91,8 @@
     "tool": "Pencil",
     "date": "2025",
     "description": "Personal drawing investigating the inner layers of the cranium and inspecting expressional muscular anatomy.",
-    "image": "/images/drawing/personal/bang-yer-head-pencil-2025.webp"
+    "image": "/images/drawing/personal/bang-yer-head-pencil-2025.webp",
+    "thumbnail": "/images/thumbnails/bang-yer-head.webp"
   },
   {
     "type": "item",
@@ -201,7 +206,8 @@
         "date": "2022",
         "image": "/images/painting/hello-dumpling-mural/tiger-zodiac-acrylic-on-fence-2022.webp"
       }
-    ]
+    ],
+    "thumbnail": "/images/thumbnails/hello-dumpling.webp"
   },
   {
     "type": "item",
@@ -211,7 +217,8 @@
     "tool": "Illustrator",
     "date": "2026",
     "description": "Branding concept featuring a transportation-inspired character for a self-created series of marketable art toys.",
-    "image": "/images/graphic-design/personal/bigg-lyps-art-toy-poster-illust-2026.webp"
+    "image": "/images/graphic-design/personal/bigg-lyps-art-toy-poster-illust-2026.webp",
+    "thumbnail": "/images/thumbnails/bigg-lyps.webp"
   },
   {
     "type": "item",
@@ -221,7 +228,8 @@
     "tool": "Illustrator",
     "date": "2026",
     "description": "",
-    "image": "/images/graphic-design/personal/intrusive-thoughts-illust-2026.webp"
+    "image": "/images/graphic-design/personal/intrusive-thoughts-illust-2026.webp",
+    "thumbnail": "/images/thumbnails/intrusive.webp"
   },
   {
     "type": "item",
@@ -231,7 +239,8 @@
     "tool": "Illustrator",
     "date": "2026",
     "description": "Branding concept featuring a food-inspired character for a self-created series of marketable art toys.",
-    "image": "/images/graphic-design/personal/pepper-art-toy-poster.webp"
+    "image": "/images/graphic-design/personal/pepper-art-toy-poster.webp",
+    "thumbnail": "/images/thumbnails/pepper.webp"
   },
   {
     "type": "project",
@@ -265,7 +274,8 @@
         "date": "2025",
         "image": "/images/graphic-design/personal/infinity-4-illustrator-2025.webp"
       }
-    ]
+    ],
+    "thumbnail": "/images/thumbnails/infinity.webp"
   },
   {
     "type": "project",
@@ -335,7 +345,8 @@
         "date": "2024",
         "image": "/images/graphic-design/personal/street-sign-stickers/stickers-10.webp"
       }
-    ]
+    ],
+    "thumbnail": "/images/thumbnails/street-sign.webp"
   },
   {
     "type": "item",
@@ -355,7 +366,8 @@
     "tool": "Color Pencil & Cardstock",
     "date": "2025",
     "description": "",
-    "image": "/images/graphic-design/personal/who-do-i-know-color-pencil-cardstock-2025.webp"
+    "image": "/images/graphic-design/personal/who-do-i-know-color-pencil-cardstock-2025.webp",
+    "thumbnail": "/images/thumbnails/who-do-i-know.webp"
   },
   {
     "type": "item",
@@ -365,7 +377,8 @@
     "tool": "Illustrator",
     "date": "2026",
     "description": "Branding concept featuring a rock-inspired character for a self-created series of marketable art toys.",
-    "image": "/images/graphic-design/personal/yiel-art-toy-poster-illust-2026.webp"
+    "image": "/images/graphic-design/personal/yiel-art-toy-poster-illust-2026.webp",
+    "thumbnail": "/images/thumbnails/yiel.webp"
   },
   {
     "type": "project",
@@ -475,7 +488,8 @@
         "date": "2025",
         "image": "/images/graphic-design/professional/adrian-groovin/adrain-groovin-poster-concept-procreate-2025.webp"
       }
-    ]
+    ],
+    "thumbnail": "/images/thumbnails/groovin.webp"
   },
   {
     "type": "project",
@@ -515,7 +529,8 @@
         "date": "2025",
         "image": "/images/graphic-design/professional/antony-gormley-ads/antony-gormley-ad-detail-5-illustrator-2025.webp"
       }
-    ]
+    ],
+    "thumbnail": "/images/thumbnails/gormley-ads.webp"
   },
   {
     "type": "project",
@@ -556,7 +571,8 @@
         "date": "2025",
         "image": "/images/graphic-design/professional/antony-gormley-brochure/gormley-brochure-web10.webp"
       }
-    ]
+    ],
+    "thumbnail": "/images/thumbnails/gormley-guide.webp"
   },
   {
     "type": "project",
@@ -731,7 +747,8 @@
         "date": "2025",
         "image": "/images/graphic-design/professional/nasher-mini-brochure/nasher-mini-brochure-web19.webp"
       }
-    ]
+    ],
+    "thumbnail": "/images/thumbnails/nasher-brochure.webp"
   },
   {
     "type": "project",
@@ -772,7 +789,8 @@
         "date": "2025",
         "image": "/images/graphic-design/professional/nasher-pride-zine/nasher-pride-web7.webp"
       }
-    ]
+    ],
+    "thumbnail": "/images/thumbnails/nasher-pride.webp"
   },
   {
     "type": "project",
@@ -812,7 +830,8 @@
         "date": "2025",
         "image": "/images/graphic-design/professional/sensory-days-dallas-logo/sensory-days-dallas-final-logo-illust-2025.webp"
       }
-    ]
+    ],
+    "thumbnail": "/images/thumbnails/sensory-dalys-dallas.webp"
   },
   {
     "type": "item",
@@ -832,7 +851,8 @@
     "tool": "NomadSculpt & Photoshop",
     "date": "2026",
     "description": "Reference sheet of a graffiti-inspired character for a self-created series of marketable art toys.",
-    "image": "/images/misc/3d/fatcap-turnaround-nomadsculpt-phtoshop-2026.webp"
+    "image": "/images/misc/3d/fatcap-turnaround-nomadsculpt-phtoshop-2026.webp",
+    "thumbnail": "/images/thumbnails/fatcap-turnaround.webp"
   },
   {
     "type": "item",
@@ -862,7 +882,8 @@
     "tool": "NomadSculpt & Photoshop",
     "date": "",
     "description": "Reference sheet of a food-inspired character for a self-created series of marketable art toys.",
-    "image": "/images/misc/3d/pepper-turnaround-nomadsculpt-phtoshop.webp"
+    "image": "/images/misc/3d/pepper-turnaround-nomadsculpt-phtoshop.webp",
+    "thumbnail": "/images/thumbnails/pepper-turnaround.webp"
   },
   {
     "type": "item",
@@ -872,7 +893,8 @@
     "tool": "NomadSculpt & Photoshop",
     "date": "2026",
     "description": "Reference sheet of an animal character for a self-created series of marketable art toys.",
-    "image": "/images/misc/3d/rami-turnaround-nomadsculpt-phtoshop-2026.webp"
+    "image": "/images/misc/3d/rami-turnaround-nomadsculpt-phtoshop-2026.webp",
+    "thumbnail": "/images/thumbnails/rami-turnaround.webp"
   },
   {
     "type": "item",
@@ -902,7 +924,8 @@
     "tool": "Cinema4D",
     "date": "2022",
     "description": "",
-    "image": "/images/misc/3d/tooth-cinema4d-2022.webp"
+    "image": "/images/misc/3d/tooth-cinema4d-2022.webp",
+    "thumbnail": "/images/thumbnails/tooth.webp"
   },
   {
     "type": "item",
@@ -912,7 +935,8 @@
     "tool": "NomadSculpt & Photoshop",
     "date": "",
     "description": "Reference sheet of a transportation-inspired character for a self-created series of marketable art toys.",
-    "image": "/images/misc/3d/yiel-turnaround-nomadsculpt-phtoshop.webp"
+    "image": "/images/misc/3d/yiel-turnaround-nomadsculpt-phtoshop.webp",
+    "thumbnail": "/images/thumbnails/yiel-turnaround.webp"
   },
   {
     "type": "item",
@@ -982,7 +1006,8 @@
     "tool": "Photo",
     "date": "2024",
     "description": "",
-    "image": "/images/misc/photo/layla-photo-2024.webp"
+    "image": "/images/misc/photo/layla-photo-2024.webp",
+    "thumbnail": "/images/thumbnails/layla.webp"
   },
   {
     "type": "item",
